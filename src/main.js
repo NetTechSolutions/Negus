@@ -615,19 +615,7 @@ function setActiveNav() {
   })
 }
 
-// ─── 8. Status bar center content per page ────────────────────────────────────
-
-const STATUS_BAR = {
-  home:     '<a href="/projects.html">View All Projects</a>',
-  projects: '<button class="projects-view-toggle" id="viewToggleBtn">Image View</button>',
-  about:    '',
-  contact:  '<a href="https://instagram.com/neguslighting" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;<a href="#" target="_blank" rel="noopener">Facebook</a>',
-}
-
-function updateStatusBar(namespace) {
-  const center = document.getElementById('statusBarCenter')
-  if (center) center.innerHTML = STATUS_BAR[namespace] || ''
-}
+// Removed STATUS_BAR logic
 
 function getNamespace() {
   return document.querySelector('[data-barba-namespace]')?.dataset.barbaNamespace || ''
@@ -637,7 +625,6 @@ function getNamespace() {
 
 function initPageFeatures() {
   const ns = getNamespace()
-  updateStatusBar(ns)
   initHomeCycle()
   initHomeCasesSlider()
   initProjectsCarousel()
