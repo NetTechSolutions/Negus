@@ -46,6 +46,16 @@
   pointer-events: none;
   user-select: none;
   z-index: 3;
+
+  @media (max-width: 820px) {
+    top: auto;
+    bottom: calc(fs(80) + #{$status-bar-height});
+    transform: none;
+  }
+
+  @media (max-width: 480px) {
+    bottom: calc(fs(60) + #{$status-bar-height});
+  }
 }
 
 .home-hero__scroll,
@@ -79,6 +89,14 @@
   // z sits BEHIND the image overlay (z-index 1)
   position: relative;
   z-index: 1;
+
+  @media (max-width: 820px) {
+    font-size: fs(220);
+  }
+
+  @media (max-width: 480px) {
+    font-size: fs(140);
+  }
 }
 
 .home-hero__line {

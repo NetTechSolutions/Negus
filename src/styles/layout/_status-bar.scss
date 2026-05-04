@@ -17,6 +17,15 @@
   color: var(--ct);
   mix-blend-mode: difference;
   pointer-events: none;
+
+  @media (max-width: 820px) {
+    font-size: fs(14);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+    padding: 0 16px;
+  }
 }
 
 .status-bar__left,
@@ -30,5 +39,9 @@
   a {
     transition: opacity 0.4s ease;
     &:hover { opacity: 0.6; }
+  }
+
+  @media (max-width: 480px) {
+    display: none;
   }
 }
