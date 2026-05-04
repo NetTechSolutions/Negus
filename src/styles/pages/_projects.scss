@@ -1,0 +1,315 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.projects-page {
+  position: relative;
+  width: 100%;
+  min-height: calc(var(--vh, 1vh) * 100);
+  background: #0f0f0f;
+  overflow: hidden;
+}
+
+// Top label bar: "Projects" + "scroll"
+.projects-header {
+  position: absolute;
+  top: 0;
+  left: fs(var(--ps));
+  right: fs(var(--ps));
+  top: calc(fs(var(--ph)) + fs(50));
+  display: flex;
+  justify-content: space-between;
+  pointer-events: none;
+  font-size: fs(18);
+
+  @media (max-width: 820px) {
+    font-size: fs(14);
+    top: calc(fs(var(--ph)) + fs(70));
+  }
+
+  @media (max-width: 480px) {
+    font-size: fs(12);
+    font-size: 12px;
+    top: calc(fs(var(--ph)) + fs(38));
+  }
+}
+
+.projects-header__title {
+  @include label-style;
+  color: var(--ct);
+}
+
+.projects-header__scroll {
+  @include label-style;
+  color: var(--ctl);
+}
+
+// Vertical project list
+.projects-list {
+  position: absolute;
+  overflow: hidden;
+  width: 100%;
+  top: fs(var(--ph));
+  bottom: fs(160);
+
+  @media (max-width: 820px) { bottom: fs(140); }
+  @media (max-width: 480px) { bottom: fs(150); }
+}
+
+// Each numbered project row
+.projects-item {
+  display: flex;
+  align-items: baseline;
+  gap: fs(60);
+  padding: fs(30) fs(var(--ps));
+  border-top: 1px solid $border;
+  position: relative;
+  transition: color 0.3s ease;
+
+  &:last-child {
+    border-bottom: 1px solid $border;
+  }
+
+  &:hover {
+    color: $accent;
+
+    .projects-item__num {
+      color: $accent;
+    }
+  }
+
+  @media (max-width: 820px) { gap: fs(30); padding: fs(22) fs(var(--ps)); }
+  @media (max-width: 480px) { gap: fs(16); padding: fs(16) fs(var(--ps)); }
+}
+
+.projects-item__num {
+  font-family: $font-sans;
+  font-size: fs(90);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0;
+  color: var(--ctl);
+  flex-shrink: 0;
+  transition: color 0.3s ease;
+
+  @media (max-width: 820px) { font-size: fs(55); }
+  @media (max-width: 480px) { font-size: fs(30); }
+}
+
+.projects-item__name {
+  font-family: $font-sans;
+  font-size: fs(130);
+  font-weight: 400;
+  text-transform: uppercase;
+  line-height: 1;
+  letter-spacing: 0;
+
+  @media (max-width: 820px) { font-size: fs(75); }
+  @media (max-width: 480px) { font-size: fs(38); }
+}
+
+// ─── Floating hover preview image ────────────────────────────────────────────
+
+.projects-preview {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 7;
+  pointer-events: none;
+  transform: translate3d(50vw, 50vh, 0);
+  will-change: transform;
+}
+
+.projects-preview__inner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fs(490);
+  height: fs(670);
+  overflow: hidden;
+  opacity: 0;
+  transition: opacity 0.35s ease;
+
+  &.is-visible {
+    opacity: 1;
+  }
+
+  @media (max-width: 820px) {
+    width: fs(306);
+    height: fs(421);
+  }
+
+  @media (max-width: 480px) {
+    width: fs(158);
+    height: fs(217);
+  }
+}
+
+.projects-preview__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+// ─── View toggle button (injected into status bar) ────────────────────────────
+
+.projects-view-toggle {
+  @include label-style;
+  position: relative;
+  display: inline-block;
+  color: var(--ct);
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    background: currentColor;
+    transform: scaleX(0);
+    transform-origin: right;
+    transition: transform 0.4s cubic-bezier(1, 0, 0.29, 1);
+  }
+
+  &:hover::after {
+    transform: scaleX(1);
+    transform-origin: left;
+  }
+}
+
+// ─── Image / Card view ────────────────────────────────────────────────────────
+
+.projects-cards {
+  display: none;
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+
+  &.is-active {
+    display: block;
+  }
+}
+
+.projects-cards__track {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  display: flex;
+  will-change: transform;
+}
+
+.projects-card {
+  position: relative;
+  width: fs(600);
+  height: 100%;
+  flex-shrink: 0;
+
+  @media (max-width: 820px) { width: fs(380); }
+  @media (max-width: 480px) { width: fs(270); }
+}
+
+.projects-card__num {
+  @include label-style;
+  position: absolute;
+  left: fs(var(--ps));
+  color: var(--ctl);
+  font-size: fs(18);
+
+  @media (max-width: 820px) { font-size: fs(14); }
+  @media (max-width: 480px) { font-size: 12px; }
+}
+
+.projects-card__img-wrap {
+  position: absolute;
+  left: fs(var(--ps));
+  width: fs(400);
+  height: fs(548); // 400 × (670/490)
+  overflow: hidden;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+  }
+
+  @media (max-width: 820px) {
+    width: fs(260);
+    height: fs(356);
+  }
+
+  @media (max-width: 480px) {
+    width: fs(190);
+    height: fs(260);
+  }
+}
+
+.projects-card__name {
+  @include label-style;
+  position: absolute;
+  left: fs(var(--ps));
+  color: var(--ct);
+  font-size: fs(18);
+  line-height: 1.4;
+
+  @media (max-width: 820px) { font-size: fs(14); }
+  @media (max-width: 480px) { font-size: 12px; }
+}
+
+// Odd cards — num → image → name (positioned lower)
+.projects-card:nth-child(odd) {
+  .projects-card__num    { top: fs(215); }
+  .projects-card__img-wrap { top: fs(238); }
+  .projects-card__name   { top: fs(806); } // 238 + 548 + 20
+
+  @media (max-width: 820px) {
+    .projects-card__num    { top: fs(165); }
+    .projects-card__img-wrap { top: fs(183); }
+    .projects-card__name   { top: fs(553); } // 183 + 356 + 14
+  }
+}
+
+// Even cards — num + name above image (positioned higher)
+.projects-card:nth-child(even) {
+  .projects-card__num { top: fs(105); }
+
+  .projects-card__img-wrap { top: fs(128); }
+
+  .projects-card__name {
+    top: fs(105);
+    left: auto;
+    right: fs(var(--ps));
+    text-align: right;
+  }
+
+  @media (max-width: 820px) {
+    .projects-card__num { top: fs(85); }
+    .projects-card__img-wrap { top: fs(105); }
+    .projects-card__name { top: fs(85); }
+  }
+}
+
+// ─── Scroll progress bar ──────────────────────────────────────────────────────
+
+.projects-progress {
+  position: absolute;
+  bottom: fs(var(--pb));
+  left: fs(var(--ps));
+  right: fs(var(--ps));
+  height: 1px;
+  background: var(--ctl);
+}
+
+.projects-progress__fill {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0%;
+  background: var(--ct);
+  transition: width 0.1s linear;
+}

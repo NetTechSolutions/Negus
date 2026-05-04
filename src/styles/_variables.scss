@@ -1,0 +1,39 @@
+// — Negus brand colours
+$bg:           #0a0a0a;
+$surface:      #111111;
+$accent:       #b8ff00;
+$text-primary: #f5f5f5;
+$text-muted:   rgba(#f5f5f5, 0.45);
+$border:       rgba(#f5f5f5, 0.12);
+
+// — Fonts
+$font-sans:  'Lausanne-300', Arial, Helvetica, sans-serif;
+$font-serif: 'cardinalfruit-regular', Arial, Helvetica, sans-serif;
+
+// — Fixed layout
+$status-bar-height: 48px;
+
+// — Easing
+$ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+
+// — Fluid size helper: calc((N / var(--gfs)) * 1rem)
+@function fs($n) {
+  @return calc((#{$n} / var(--gfs)) * 1rem);
+}
+
+// — CSS custom properties
+:root {
+  --gfs: 31;
+  --pb:  49;
+  --ps:  53;
+  --ph:  120;
+  --ct:  #f5f5f5;
+  --ctl: rgba(245, 245, 245, 0.5);
+  --cto: rgba(245, 245, 245, 0.7);
+}
+@media (max-width: 820px) {
+  :root { --ps: 40; --pb: 32; --ph: 95; }
+}
+@media (max-width: 480px) {
+  :root { --ps: 17; --pb: 20; --ph: 55; }
+}

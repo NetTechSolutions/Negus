@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover" />
+  <title>About — Negus</title>
+  <link rel="stylesheet" href="/src/styles/main.scss" />
+</head>
+
+<body data-barba="wrapper">
+
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="/" class="navbar__logo">
+      <img src="/src/assets/images/logo/logo-medium.jpg" alt="Negus" />
+    </a>
+    <div class="navbar__right">
+      <a href="#" class="navbar__gallery-link" id="galleryTrigger">Gallery</a>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Toggle menu">
+        <span class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-curtain" id="navCurtain">
+    <div class="nav-curtain__panel"></div>
+    <div class="nav-curtain__panel"></div>
+    <div class="nav-curtain__panel"></div>
+  </div>
+
+  <div class="nav-overlay" id="navOverlay">
+    <nav class="nav-overlay__items">
+      <a href="/" class="nav-overlay__item">
+        <span class="char">H</span><span class="char">O</span><span class="char">M</span><span class="char">E</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="/projects.html" class="nav-overlay__item">
+        <span class="char">P</span><span class="char">R</span><span class="char">O</span><span
+          class="char">J</span><span class="char">E</span><span class="char">C</span><span class="char">T</span><span
+          class="char">S</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="/about.html" class="nav-overlay__item is-active">
+        <span class="char">A</span><span class="char">B</span><span class="char">O</span><span
+          class="char">U</span><span class="char">T</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="/contact.html" class="nav-overlay__item">
+        <span class="char">C</span><span class="char">O</span><span class="char">N</span><span
+          class="char">T</span><span class="char">A</span><span class="char">C</span><span class="char">T</span>
+        <span class="link-underline"></span>
+      </a>
+    </nav>
+    <div class="nav-overlay__bottom">
+      <div class="nav-overlay__socials">
+        <a href="https://instagram.com/neguslighting" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://tiktok.com/@neguslighting" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+    <div class="nav-overlay__page-num" id="navPageNum">03</div>
+  </div>
+
+  <div class="gallery-overlay" id="galleryOverlay">
+    <div class="gallery-overlay__left">
+      <img class="gallery-overlay__image" id="galleryImage" src="/src/assets/images/projects/aventra-pharmacy/01.jpg"
+        alt="Gallery image" />
+    </div>
+    <div class="gallery-overlay__right">
+      <span class="gallery-overlay__slide-num" id="gallerySlideNum">01</span>
+      <div class="gallery-overlay__nav">
+        <button id="galleryPrev">Prev</button>
+        <button id="galleryNext">Next</button>
+      </div>
+      <button class="gallery-overlay__close-btn" id="galleryClose">Close</button>
+      <span class="gallery-overlay__counter">Design Gallery</span>
+    </div>
+  </div>
+
+  <footer class="status-bar">
+    <span class="status-bar__left">Bulawayo</span>
+    <span class="status-bar__center" id="statusBarCenter"></span>
+    <span class="status-bar__right">Zimbabwe</span>
+  </footer>
+
+  <main data-barba="container" data-barba-namespace="about">
+    <div class="about-page">
+
+      <!-- Hero: centered heading — animated by _entranceAbout(), no data-reveal -->
+      <div class="about-top">
+        <h1 class="about-top__title">
+          <span class="about-top__line"><span class="about-top__word">Studio</span></span>
+          <span class="about-top__line"><span class="about-top__word">Profile</span></span>
+        </h1>
+        <div class="about-top__status">
+          <span>Bulawayo</span>
+          <span>Zimbabwe</span>
+        </div>
+      </div>
+
+      <!-- Editorial image -->
+      <div class="about-photo-wrap" data-reveal-img>
+        <img class="about-photo" src="/src/assets/images/logo/about-editorial.jpg"
+          alt="Negus interior design installation" />
+      </div>
+
+      <!-- Section 01: large serif statement -->
+      <section class="about-section about-section--statement" data-reveal>
+        <div class="about-section__num">
+          <span>0</span><span>1</span>
+        </div>
+        <h2 class="about-section__headline">
+          <span class="about-top__line"><span class="about-top__word">Design is your</span></span>
+          <span class="about-top__line"><span class="about-top__word">most powerful</span></span>
+          <span class="about-top__line"><span class="about-top__word">business asset.</span></span>
+        </h2>
+      </section>
+
+      <!-- Section 02: about copy -->
+      <section class="about-section about-section--body" data-reveal>
+        <div class="about-section__label">about</div>
+        <div class="about-section__content">
+          <h3 class="about-section__subhead">
+            <span class="about-top__line"><span class="about-top__word">We design</span></span>
+            <span class="about-top__line"><span class="about-top__word">commercial spaces</span></span>
+            <span class="about-top__line"><span class="about-top__word">that perform.</span></span>
+          </h3>
+          <div class="about-section__copy">
+            <p>
+              Negus is a Bulawayo-based interior design practice dedicated to transforming commercial spaces into strategic business assets. Recognizing that the city’s retail and hospitality sectors are the heartbeat of the local economy, we specialize in creating high-impact environments for salons, boutiques, and hospitality venues.
+            </p>
+            <p>
+              Our work bridges the gap between aesthetic sophistication and functional durability, ensuring that every space not only looks exceptional but also drives operational efficiency and customer loyalty.
+            </p>
+
+            <div class="about-image-split" data-reveal>
+              <div class="about-image-split__col" data-reveal-img>
+                <img src="/src/assets/images/projects/luxehub/01.jpg" alt="Negus Hospitality Design" />
+              </div>
+              <div class="about-image-split__col" data-reveal-img>
+                <img src="/src/assets/images/projects/luxehub/02.jpg" alt="Negus Interior Spaces" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 03: market insight -->
+      <section class="about-section about-section--body" data-reveal>
+        <div class="about-section__label">market</div>
+        <div class="about-section__content">
+          <h3 class="about-section__subhead">
+            <span class="about-top__line"><span class="about-top__word">The physical</span></span>
+            <span class="about-top__line"><span class="about-top__word">environment is</span></span>
+            <span class="about-top__line"><span class="about-top__word">your brand.</span></span>
+          </h3>
+          <div class="about-section__copy">
+            <p>
+              Bulawayo’s commercial landscape is experiencing a renaissance, with a growing demand for distinctive, high-quality spaces that cater to discerning consumers. In the beauty, fashion, and hospitality sectors, the physical environment is no longer a secondary consideration—it is a primary driver of brand perception and revenue.
+            </p>
+            <p>
+              Salon clients seek Instagram-worthy interiors that convey luxury and hygiene; boutiques require layouts that optimize merchandise display and customer flow; and hospitality businesses need atmospheres that balance comfort, acoustics, and durability. There is a distinct gap in the local market for a designer who understands the specific operational nuances of these industries while delivering world-class finishes.
+            </p>
+
+            <div class="about-full-image" data-reveal-img>
+              <img src="/src/assets/images/projects/kims-apparel/01.jpg" alt="Negus Salon Design" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Full-width visual break -->
+      <div class="about-photo-wrap" data-reveal-img style="margin: 12vh 0;">
+        <img class="about-photo" src="/src/assets/images/projects/chaneys-hair/01.jpg"
+          alt="Negus luxury interior environment" />
+      </div>
+
+      <!-- Section 04: partner -->
+      <section class="about-section about-section--body" data-reveal>
+        <div class="about-section__label">partner</div>
+        <div class="about-section__content">
+          <h3 class="about-section__subhead">
+            <span class="about-top__line"><span class="about-top__word">Invest in your</span></span>
+            <span class="about-top__line"><span class="about-top__word">bottom line.</span></span>
+          </h3>
+          <div class="about-section__copy">
+            <p>
+              Investing in professional interior design is an investment in your business’s bottom line. By choosing Negus, you gain a partner who is committed to delivering spaces that are:
+            </p>
+            <ul style="list-style: none; padding: 0; margin-top: 2rem; display: flex; flex-direction: column; gap: 1rem;">
+              <li><strong>Brand-Centric:</strong> Your space becomes a physical manifestation of your brand story.</li>
+              <li><strong>Operationally Sound:</strong> Designed to reduce staff fatigue and streamline service delivery.</li>
+              <li><strong>Aesthetically Distinct:</strong> Stand out in a competitive market with a unique, memorable environment.</li>
+            </ul>
+
+            <div class="about-image-split" data-reveal>
+              <div class="about-image-split__col" data-reveal-img>
+                <img src="/src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Negus Retail Design" />
+              </div>
+              <div class="about-image-split__col" data-reveal-img>
+                <img src="/src/assets/images/projects/chaneys-hair/02.jpg" alt="Negus Commercial Spaces" />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

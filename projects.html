@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover" />
+  <title>Projects — Negus</title>
+  <link rel="stylesheet" href="/src/styles/main.scss" />
+</head>
+<body data-barba="wrapper">
+
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="/" class="navbar__logo">
+      <img src="/src/assets/images/logo/logo-medium.jpg" alt="Negus Lighting Technologies" />
+    </a>
+    <div class="navbar__right">
+      <a href="#" class="navbar__gallery-link" id="galleryTrigger">Gallery</a>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Toggle menu">
+        <span class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-curtain" id="navCurtain">
+    <div class="nav-curtain__panel"></div>
+    <div class="nav-curtain__panel"></div>
+    <div class="nav-curtain__panel"></div>
+  </div>
+
+  <div class="nav-overlay" id="navOverlay">
+    <nav class="nav-overlay__items">
+      <a href="/" class="nav-overlay__item">
+        <span class="char">H</span><span class="char">O</span><span class="char">M</span><span class="char">E</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="/projects.html" class="nav-overlay__item is-active">
+        <span class="char">P</span><span class="char">R</span><span class="char">O</span><span class="char">J</span><span class="char">E</span><span class="char">C</span><span class="char">T</span><span class="char">S</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="/about.html" class="nav-overlay__item">
+        <span class="char">A</span><span class="char">B</span><span class="char">O</span><span class="char">U</span><span class="char">T</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="/contact.html" class="nav-overlay__item">
+        <span class="char">C</span><span class="char">O</span><span class="char">N</span><span class="char">T</span><span class="char">A</span><span class="char">C</span><span class="char">T</span>
+        <span class="link-underline"></span>
+      </a>
+    </nav>
+    <div class="nav-overlay__bottom">
+      <div class="nav-overlay__socials">
+        <a href="https://instagram.com/neguslighting" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://tiktok.com/@neguslighting" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+    <div class="nav-overlay__page-num" id="navPageNum">02</div>
+  </div>
+
+  <div class="gallery-overlay" id="galleryOverlay">
+    <div class="gallery-overlay__left">
+      <img class="gallery-overlay__image" id="galleryImage" src="/src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Gallery image" />
+    </div>
+    <div class="gallery-overlay__right">
+      <span class="gallery-overlay__slide-num" id="gallerySlideNum">01</span>
+      <div class="gallery-overlay__nav">
+        <button id="galleryPrev">Prev</button>
+        <button id="galleryNext">Next</button>
+      </div>
+      <button class="gallery-overlay__close-btn" id="galleryClose">Close</button>
+      <span class="gallery-overlay__counter">Design Gallery</span>
+    </div>
+  </div>
+
+  <footer class="status-bar">
+    <span class="status-bar__left">Lighting Technologies</span>
+    <span class="status-bar__center" id="statusBarCenter"></span>
+    <span class="status-bar__right">©2026</span>
+  </footer>
+
+  <main data-barba="container" data-barba-namespace="projects">
+    <div class="projects-page">
+
+      <!-- Top label bar -->
+      <div class="projects-header">
+        <h1 class="projects-header__title">Projects</h1>
+        <span class="projects-header__scroll">scroll</span>
+      </div>
+
+      <!-- LIST VIEW: Vertical numbered list (default) -->
+      <div class="projects-list" id="projectsList">
+
+        <a href="#" class="projects-item"
+           data-img="/src/assets/images/projects/multicare-dental/01.jpg">
+          <span class="projects-item__num">01</span>
+          <span class="projects-item__name">MultiCare Dental Surgery</span>
+        </a>
+
+        <a href="#" class="projects-item"
+           data-img="/src/assets/images/projects/aventra-pharmacy/01.jpg">
+          <span class="projects-item__num">02</span>
+          <span class="projects-item__name">Aventra Pharmacy</span>
+        </a>
+
+        <a href="#" class="projects-item"
+           data-img="/src/assets/images/projects/kims-apparel/01.jpg">
+          <span class="projects-item__num">03</span>
+          <span class="projects-item__name">Kim's Apparel</span>
+        </a>
+
+        <a href="#" class="projects-item"
+           data-img="/src/assets/images/projects/chaneys-hair/01.jpg">
+          <span class="projects-item__num">04</span>
+          <span class="projects-item__name">Chaney's Modern Hair Luxury</span>
+        </a>
+
+        <a href="#" class="projects-item"
+           data-img="/src/assets/images/projects/luxehub/01.jpg">
+          <span class="projects-item__num">05</span>
+          <span class="projects-item__name">Luxehub</span>
+        </a>
+
+      </div>
+
+      <!-- IMAGE VIEW: Horizontal card strip (hidden by default) -->
+      <div class="projects-cards" id="projectsCards">
+        <div class="projects-cards__track" id="projectsCardsTrack">
+
+          <div class="projects-card">
+            <span class="projects-card__num">01</span>
+            <div class="projects-card__img-wrap">
+              <img src="/src/assets/images/projects/multicare-dental/01.jpg" alt="MultiCare Dental Surgery" />
+            </div>
+            <span class="projects-card__name">MultiCare<br />Dental Surgery</span>
+          </div>
+
+          <div class="projects-card">
+            <span class="projects-card__num">02</span>
+            <div class="projects-card__img-wrap">
+              <img src="/src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Aventra Pharmacy" />
+            </div>
+            <span class="projects-card__name">Aventra Pharmacy</span>
+          </div>
+
+          <div class="projects-card">
+            <span class="projects-card__num">03</span>
+            <div class="projects-card__img-wrap">
+              <img src="/src/assets/images/projects/kims-apparel/01.jpg" alt="Kim's Apparel" />
+            </div>
+            <span class="projects-card__name">Kim's Apparel</span>
+          </div>
+
+          <div class="projects-card">
+            <span class="projects-card__num">04</span>
+            <div class="projects-card__img-wrap">
+              <img src="/src/assets/images/projects/chaneys-hair/01.jpg" alt="Chaney's Modern Hair Luxury" />
+            </div>
+            <span class="projects-card__name">Chaney's<br />Hair Luxury</span>
+          </div>
+
+          <div class="projects-card">
+            <span class="projects-card__num">05</span>
+            <div class="projects-card__img-wrap">
+              <img src="/src/assets/images/projects/luxehub/01.jpg" alt="Luxehub" />
+            </div>
+            <span class="projects-card__name">Luxehub</span>
+          </div>
+
+        </div>
+
+        <!-- Scroll progress bar -->
+        <div class="projects-progress">
+          <div class="projects-progress__fill" id="projectsProgressFill"></div>
+        </div>
+      </div>
+
+      <!-- Floating hover preview (list view) — inside container so Barba injects it -->
+      <div class="projects-preview" id="projectsPreview">
+        <div class="projects-preview__inner">
+          <img class="projects-preview__img" id="projectsPreviewImg" src="" alt="" />
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>

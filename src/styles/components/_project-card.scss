@@ -1,0 +1,52 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+.project-card {
+  position: relative;
+  overflow: hidden;
+  flex-shrink: 0;
+  cursor: none;
+
+  &:hover {
+    .project-card__img {
+      transform: scale(1.04);
+    }
+
+    .project-card__overlay {
+      opacity: 0;
+    }
+  }
+}
+
+.project-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.7s $ease-out;
+}
+
+.project-card__overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(#000, 0.4);
+  transition: opacity 0.5s ease;
+}
+
+.project-card__num {
+  position: absolute;
+  top: fs(14);
+  left: fs(14);
+  @include label-style;
+  color: var(--ctl);
+  z-index: 2;
+}
+
+.project-card__name {
+  position: absolute;
+  bottom: fs(16);
+  left: fs(14);
+  @include label-style;
+  font-size: fs(14);
+  z-index: 2;
+}
