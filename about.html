@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26' font-family='serif' fill='%23b8ff00'>N</text></svg>" />
+  <title>About — Negus</title>  <link rel="stylesheet" href="./src/styles/main.scss" />
+</head>
+
+<body data-barba="wrapper">
+
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  <nav class="navbar" id="navbar">
+    <a href="./index.html" class="navbar__logo">
+      <span class="navbar__logo-text">Negus</span>
+    </a>
+    <div class="navbar__right">
+      <a href="#" class="navbar__gallery-link" id="galleryTrigger">Gallery</a>
+      <button class="navbar__burger" id="burgerBtn" aria-label="Toggle menu">
+        <span class="burger-icon">
+          <span></span>
+          <span></span>
+          <span></span>
+        </span>
+      </button>
+    </div>
+  </nav>
+
+  <div class="nav-curtain" id="navCurtain">
+    <div class="nav-curtain__panel"></div>
+    <div class="nav-curtain__panel"></div>
+    <div class="nav-curtain__panel"></div>
+  </div>
+
+  <div class="nav-overlay" id="navOverlay">
+    <div class="nav-overlay__descriptor" aria-hidden="true">
+      Commercial Interior Design<br>Bulawayo, Zimbabwe
+    </div>
+    <nav class="nav-overlay__items">
+      <a href="./index.html" class="nav-overlay__item">
+        <span class="char">H</span><span class="char">O</span><span class="char">M</span><span class="char">E</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="./projects.html" class="nav-overlay__item">
+        <span class="char">P</span><span class="char">R</span><span class="char">O</span><span
+          class="char">J</span><span class="char">E</span><span class="char">C</span><span class="char">T</span><span
+          class="char">S</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="./about.html" class="nav-overlay__item is-active">
+        <span class="char">A</span><span class="char">B</span><span class="char">O</span><span
+          class="char">U</span><span class="char">T</span>
+        <span class="link-underline"></span>
+      </a>
+      <a href="./contact.html" class="nav-overlay__item">
+        <span class="char">C</span><span class="char">O</span><span class="char">N</span><span
+          class="char">T</span><span class="char">A</span><span class="char">C</span><span class="char">T</span>
+        <span class="link-underline"></span>
+      </a>
+    </nav>
+    <div class="nav-overlay__side" aria-hidden="true">
+      <img class="nav-overlay__side-img" id="navSideImg"
+        src="/src/assets/images/company/IMG_20260406_210056.jpg.jpeg" alt="" />
+    </div>
+    <div class="nav-overlay__bottom">
+      <div class="nav-overlay__socials">
+        <a href="https://instagram.com/neguslighting" target="_blank" rel="noopener">Instagram</a>
+        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://tiktok.com/@neguslighting" target="_blank" rel="noopener">TikTok</a>
+      </div>
+    </div>
+    <div class="nav-overlay__page-num" id="navPageNum">03</div>
+  </div>
+
+  <div class="gallery-overlay" id="galleryOverlay">
+    <div class="gallery-overlay__left">
+      <img class="gallery-overlay__image" id="galleryImage" src="/src/assets/images/projects/aventra-pharmacy/01.jpg"
+        alt="Gallery image" />
+    </div>
+    <div class="gallery-overlay__right">
+      <span class="gallery-overlay__slide-num" id="gallerySlideNum">01</span>
+      <div class="gallery-overlay__nav">
+        <button id="galleryPrev">Prev</button>
+        <button id="galleryNext">Next</button>
+      </div>
+      <button class="gallery-overlay__close-btn" id="galleryClose">Close</button>
+      <span class="gallery-overlay__counter">Design Gallery</span>
+    </div>
+  </div>
+
+  <footer class="status-bar">
+    <span class="status-bar__left">Bulawayo</span>
+    <span class="status-bar__center" id="statusBarCenter"></span>
+    <span class="status-bar__right">Zimbabwe</span>
+  </footer>
+
+  <main data-barba="container" data-barba-namespace="about">
+    <div class="about-page">
+
+      <!-- Hero: centered heading — animated by _entranceAbout(), no data-reveal -->
+      <div class="about-top">
+        <h1 class="about-top__title">
+          <span class="about-top__line"><span class="about-top__word">Studio</span></span>
+          <span class="about-top__line"><span class="about-top__word">Profile</span></span>
+        </h1>
+        <div class="about-top__status">
+          <span>Bulawayo</span>
+          <span>Zimbabwe</span>
+        </div>
+        <div class="about-top__rule"></div>
+      </div>
+
+      <!-- Editorial image -->
+      <div class="about-photo-wrap" data-reveal-img>
+        <img class="about-photo" src="/src/assets/images/company/IMG_20260406_210056.jpg.jpeg"
+          alt="Negus interior design installation" loading="lazy" decoding="async" />
+      </div>
+
+      <!-- Section 01: large serif statement -->
+      <section class="about-section about-section--statement" data-reveal>
+        <div class="about-section__num">
+          <span>0</span><span>1</span>
+        </div>
+        <h2 class="about-section__headline">
+          Design is your most powerful business asset.
+        </h2>
+      </section>
+
+      <!-- Section 02: studio -->
+      <section class="about-section about-section--body" data-reveal>
+        <div class="about-section__label">studio</div>
+        <div class="about-section__content">
+          <h3 class="about-section__subhead">We design commercial spaces that perform.</h3>
+          <div class="about-section__copy">
+            <p>
+              Negus is a Bulawayo-based interior design practice dedicated to transforming commercial spaces into strategic business assets. We specialize in salons, boutiques, and hospitality venues — the environments where brand experience and business performance intersect.
+            </p>
+            <p>
+              Our methodology is rooted in the Bulawayo context: local climate, material availability, and the city's architectural heritage inform every decision. From ergonomic station layouts and acoustic zoning to procurement and construction management, we handle the complete project lifecycle — from concept brief to final walkthrough.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 03: market -->
+      <section class="about-section about-section--body" data-reveal>
+        <div class="about-section__label">market</div>
+        <div class="about-section__content">
+          <h3 class="about-section__subhead">Bulawayo's commercial renaissance.</h3>
+          <div class="about-section__copy">
+            <p>
+              Bulawayo's retail and hospitality sectors are experiencing a renaissance, with a growing demand for distinctive, high-quality spaces that serve discerning consumers. Salon clients seek Instagram-worthy interiors that convey luxury and hygiene; boutiques require layouts that maximize merchandise impact and guide customer flow; hospitality businesses need atmospheres that balance comfort, acoustics, and durability.
+            </p>
+            <p>
+              There is a clear gap in the local market for a designer who understands the operational nuances of these industries while delivering world-class finishes. Negus fills that gap — combining international design sensibility with a deep understanding of what works in Zimbabwe.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 04: process -->
+      <section class="about-section about-section--body" data-reveal>
+        <div class="about-section__label">process</div>
+        <div class="about-section__content">
+          <h3 class="about-section__subhead">Full-service, start to finish.</h3>
+          <div class="about-section__copy">
+            <p>
+              We translate your brand identity into a spatial narrative — centering on color psychology, lighting design, and materiality that resonates with your target clientele. For salons and boutiques we prioritize ergonomic workspaces and logical circulation; for hospitality we focus on acoustic zoning and social energy.
+            </p>
+            <p>
+              Leveraging local supply chains and vetted contractors across Zimbabwe, we manage every stage of your commercial fit-out — from sourcing finishes and furniture to overseeing construction — ensuring strict adherence to timelines and budget.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 05: founder -->
+      <section class="about-section about-section--body" data-reveal>
+        <div class="about-section__label">founder</div>
+        <div class="about-section__content">
+          <h3 class="about-section__subhead">Mr Shadreck Ngorima</h3>
+          <div class="about-section__copy">
+            <p>
+              Negus was founded with a singular conviction: that commercial spaces in Bulawayo deserve the same level of design rigour as those in any global city. Mr Ngorima brings a results-driven approach to every project — measuring success not just in aesthetics but in footfall, dwell time, and client retention for the businesses we serve.
+            </p>
+            <p>
+              To discuss your project, reach out directly at <a href="mailto:neguslighting@gmail.com" style="color:var(--ct);text-decoration:underline">neguslighting@gmail.com</a> or call <a href="tel:+2630781620377" style="color:var(--ct);text-decoration:underline">0781 620 377</a>.
+            </p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+
+</html>

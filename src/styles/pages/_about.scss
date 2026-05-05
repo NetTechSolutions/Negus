@@ -1,0 +1,242 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// ─── Page scroller ────────────────────────────────────────────────────────────
+
+.about-page {
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: calc(var(--vh, 1vh) * 100);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar { display: none; }
+}
+
+// ─── Hero: centered massive heading ───────────────────────────────────────────
+
+.about-top {
+  position: relative;
+  padding: calc(var(--vh, 1vh) * 20) fs(var(--ps)) 0;
+  min-height: calc(var(--vh, 1vh) * 85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (max-width: 820px) { padding-top: calc(var(--vh, 1vh) * 13); min-height: calc(var(--vh, 1vh) * 75); }
+  @media (max-width: 480px) { padding-top: calc(var(--vh, 1vh) * 15); min-height: 0; padding-bottom: fs(60); }
+}
+
+.about-top__title {
+  font-family: $font-serif;
+  font-size: fs(330);
+  text-transform: uppercase;
+  text-align: center;
+  line-height: 0.88;
+  color: $text-primary;
+  margin-bottom: fs(40);
+
+  .about-top__line:nth-child(2) {
+    margin-top: -0.1em;
+    color: $accent;
+  }
+
+  @media (max-width: 820px) {
+    font-size: fs(160);
+    margin-bottom: fs(36);
+  }
+
+  @media (max-width: 480px) {
+    font-size: fs(80);
+    margin-bottom: fs(28);
+  }
+}
+
+.about-top__line {
+  display: block;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.about-top__word {
+  display: inline-block;
+}
+
+.about-top__status {
+  display: flex;
+  justify-content: center;
+  gap: fs(40);
+
+  span {
+    @include label-style;
+    font-size: fs(14);
+    color: var(--ctl);
+  }
+
+  @media (max-width: 480px) {
+    span { font-size: 11px; }
+    gap: fs(24);
+  }
+}
+
+// Thin accent divider below hero
+.about-top__rule {
+  width: fs(48);
+  height: 1px;
+  background: $accent;
+  margin: fs(48) auto 0;
+
+  @media (max-width: 480px) { margin-top: fs(32); }
+}
+
+// ─── Editorial image ──────────────────────────────────────────────────────────
+
+.about-photo-wrap {
+  overflow: hidden;
+  will-change: opacity, transform;
+  position: relative;
+
+  // Subtle top gradient so hero bleeds into image
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 30%;
+    background: linear-gradient(to bottom, $bg, transparent);
+    z-index: 1;
+    pointer-events: none;
+  }
+}
+
+.about-photo {
+  width: 100%;
+  height: clamp(360px, 60vh, 720px);
+  object-fit: cover;
+  display: block;
+}
+
+// ─── Section 01: large serif statement ───────────────────────────────────────
+
+.about-section {
+  will-change: opacity, transform;
+}
+
+.about-section--statement {
+  padding: fs(120) fs(var(--ps));
+  border-top: 1px solid $border;
+
+  @media (max-width: 820px) {
+    padding: fs(80) fs(var(--ps));
+  }
+
+  @media (max-width: 480px) {
+    padding: fs(56) fs(var(--ps));
+  }
+}
+
+.about-section__num {
+  font-family: $font-sans;
+  font-size: fs(13);
+  color: $accent;
+  margin-bottom: fs(28);
+  display: flex;
+  gap: 1px;
+
+  span { @include label-style; font-size: inherit; }
+
+  @media (max-width: 480px) { font-size: 11px; margin-bottom: fs(20); }
+}
+
+.about-section__headline {
+  font-family: $font-serif;
+  font-size: fs(130);
+  text-transform: uppercase;
+  color: $text-primary;
+  line-height: 0.97;
+  overflow: visible;
+  white-space: normal;
+  max-width: fs(900);
+
+  @media (max-width: 820px) { font-size: fs(72); }
+  @media (max-width: 480px) { font-size: fs(38); line-height: 1.05; }
+}
+
+// ─── Section body: label + content ───────────────────────────────────────────
+
+.about-section--body {
+  display: grid;
+  grid-template-columns: fs(160) 1fr;
+  gap: fs(60);
+  padding: fs(72) fs(var(--ps));
+  border-top: 1px solid $border;
+
+  @media (max-width: 820px) {
+    grid-template-columns: 1fr;
+    gap: fs(24);
+    padding: fs(56) fs(var(--ps));
+  }
+
+  @media (max-width: 480px) {
+    padding: fs(40) fs(var(--ps));
+  }
+}
+
+.about-section__label {
+  @include label-style;
+  font-size: fs(13);
+  color: $accent;
+  padding-top: fs(6);
+  align-self: flex-start;
+  position: relative;
+  // Vertical text on desktop
+  writing-mode: initial;
+
+  @media (max-width: 820px) {
+    font-size: fs(11);
+  }
+
+  @media (max-width: 480px) {
+    font-size: 10px;
+  }
+}
+
+.about-section__content {
+  max-width: fs(720);
+
+  @media (max-width: 820px) { max-width: 100%; }
+}
+
+.about-section__subhead {
+  font-family: $font-serif;
+  font-size: fs(72);
+  text-transform: uppercase;
+  line-height: 1.05;
+  color: $text-primary;
+  margin-bottom: fs(36);
+  overflow: visible;
+  white-space: normal;
+
+  @media (max-width: 820px) { font-size: fs(44); margin-bottom: fs(20); }
+  @media (max-width: 480px) { font-size: fs(28); margin-bottom: fs(16); }
+}
+
+.about-section__copy {
+  font-family: $font-sans;
+  font-size: fs(17);
+  line-height: 1.85;
+  color: var(--cto);
+  text-transform: none;
+
+  p + p { margin-top: fs(18); }
+
+  @media (max-width: 820px) { font-size: fs(14); line-height: 1.8; }
+  @media (max-width: 480px) { font-size: 13px; line-height: 1.75; }
+}
+
+// ─── Scroll reveal ────────────────────────────────────────────────────────────
+
+[data-reveal] {
+  will-change: opacity, transform;
+}

@@ -1,0 +1,267 @@
+@use '../variables' as *;
+@use '../mixins' as *;
+
+// ─── Persistent navbar ───────────────────────────────────────────────────────
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 100;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  padding: fs(40) fs(var(--ps)) 0;
+  font-size: fs(18);
+  color: var(--ct);
+  pointer-events: none;
+}
+
+.navbar__logo {
+  pointer-events: auto;
+  display: flex;
+  align-items: center;
+}
+
+.navbar__logo-text {
+  font-family: $font-serif;
+  font-size: fs(28);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: var(--ct);
+  line-height: 1;
+  transition: opacity 0.3s ease;
+
+  &:hover { opacity: 0.7; }
+
+  @media (max-width: 820px) { font-size: fs(22); }
+}
+
+.navbar__right {
+  display: flex;
+  align-items: center;
+  gap: fs(20);
+  pointer-events: auto;
+}
+
+.navbar__gallery-link {
+  @include label-style;
+  transition: color 0.4s ease;
+
+  &:hover {
+    color: $accent;
+  }
+}
+
+// ─── Burger button ────────────────────────────────────────────────────────────
+
+.navbar__burger {
+  --btn-s: 42px;
+  --bar-w: 18px;
+  --bar-h: 1px;
+  --icon-h: 10px;
+
+  width: var(--btn-s);
+  height: var(--btn-s);
+  border: 1px solid var(--ct);
+  border-radius: 50%;
+  position: relative;
+  cursor: none;
+  pointer-events: auto;
+  flex-shrink: 0;
+
+  @media (max-width: 1400px) { --btn-s: 36px; --bar-w: 14px; --icon-h: 8px; }
+  @media (max-width: 1200px) { --btn-s: 30px; --bar-w: 14px; --icon-h: 8px; }
+  @media (max-width: 820px)  { --btn-s: 42px; --bar-w: 19px; --icon-h: 10px; }
+  @media (max-width: 480px)  { --btn-s: 24px; --bar-w: 10px; --icon-h: 6px; }
+}
+
+.burger-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-left: calc(var(--bar-w) / -2);
+  margin-top: calc(var(--icon-h) / -2);
+  width: var(--bar-w);
+  height: var(--icon-h);
+
+  span {
+    position: absolute;
+    left: 0;
+    width: var(--bar-w);
+    height: var(--bar-h);
+    background: var(--ct);
+    transform-origin: center;
+
+    &:nth-child(1) { top: 0; }
+    &:nth-child(2) { top: 50%; }
+    &:nth-child(3) { top: 100%; }
+  }
+}
+
+// ─── Full-screen nav overlay ─────────────────────────────────────────────────
+
+// ─── Nav curtain (3-panel background) ────────────────────────────────────────
+
+.nav-curtain {
+  position: fixed;
+  inset: 0;
+  z-index: 198;
+  display: flex;
+  flex-direction: column;
+  visibility: hidden;
+  pointer-events: none;
+}
+
+.nav-curtain__panel {
+  flex: 1;
+  background: $bg;
+}
+
+// ─── Nav overlay (content, sits above curtain) ────────────────────────────────
+
+.nav-overlay {
+  position: fixed;
+  inset: 0;
+  background: transparent;
+  z-index: 199;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  visibility: hidden;
+  pointer-events: none;
+  opacity: 0;
+  padding: fs(40) fs(var(--ps));
+}
+
+.nav-overlay__descriptor {
+  position: absolute;
+  top: fs(40);
+  right: fs(var(--ps));
+  @include label-style;
+  color: var(--ctl);
+  text-align: right;
+  line-height: 1.8;
+}
+
+.nav-overlay__items {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  flex: 1;
+  padding-top: fs(40);
+  // Leave room for the side image on desktop
+  padding-right: 34vw;
+
+  @media (max-width: 820px) { padding-right: 0; }
+}
+
+.nav-overlay__item {
+  display: block;
+  font-family: $font-serif;
+  font-size: fs(125);
+  text-transform: uppercase;
+  line-height: 0.977;
+  color: var(--ct);
+  position: relative;
+  overflow: hidden;
+
+  // Sliding underline on hover
+  .link-underline {
+    position: absolute;
+    bottom: 0.02em;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    overflow: hidden;
+
+    &::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      right: -1px;
+      width: 0;
+      height: 1px;
+      background: $accent;
+      transition: width 0.5s cubic-bezier(1, 0, 0.29, 1);
+    }
+  }
+
+  &:hover .link-underline::after {
+    left: -1px;
+    right: auto;
+    width: calc(100% + 1px);
+  }
+
+  &.is-active {
+    color: $accent;
+  }
+
+  @media (max-width: 820px) { font-size: fs(74); }
+  @media (max-width: 480px) { font-size: fs(52); }
+}
+
+// Character spans for GSAP yPercent animation
+.char {
+  display: inline-block;
+}
+
+// ─── Nav side image ───────────────────────────────────────────────────────────
+
+.nav-overlay__side {
+  position: absolute;
+  top: 50%;
+  right: fs(var(--ps));
+  transform: translateY(-50%);
+  width: 28vw;
+  max-width: fs(460);
+  aspect-ratio: 3 / 4;
+  overflow: hidden;
+  pointer-events: none;
+
+  @media (max-width: 1024px) { width: 24vw; }
+  @media (max-width: 820px)  { display: none; }
+}
+
+.nav-overlay__side-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  will-change: opacity;
+}
+
+.nav-overlay__bottom {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding-top: fs(var(--pb));
+}
+
+.nav-overlay__socials {
+  @include label-style;
+  display: flex;
+  gap: fs(24);
+
+  a {
+    transition: color 0.4s ease;
+    &:hover { color: $accent; }
+  }
+}
+
+.nav-overlay__page-num {
+  font-family: $font-serif;
+  font-size: fs(160);
+  color: var(--ctl);
+  line-height: 1;
+  position: absolute;
+  left: fs(var(--ps));
+  bottom: 0;
+  margin-bottom: -0.1em;
+  pointer-events: none;
+  user-select: none;
+
+  @media (max-width: 820px) { font-size: fs(120); left: auto; right: fs(var(--ps)); }
+  @media (max-width: 480px) { font-size: fs(56); }
+}

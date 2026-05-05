@@ -1,0 +1,26 @@
+@use '../variables' as *;
+
+@font-face {
+  font-family: 'Lausanne-300';
+  src: url('/src/assets/fonts/Lausanne-300.woff2') format('woff2'),
+       url('/src/assets/fonts/Lausanne-300.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'cardinalfruit-regular';
+  src: url('/src/assets/fonts/cardinalfruitweb-regular.woff2') format('woff2'),
+       url('/src/assets/fonts/cardinalfruitweb-regular.woff') format('woff');
+  font-weight: normal;
+  font-display: swap;
+  font-style: normal;
+}
+
+body {
+  font-family: $font-sans;
+  font-size: fs(18);
+  line-height: 1;
+  text-transform: uppercase;
+}

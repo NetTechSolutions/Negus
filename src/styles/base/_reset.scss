@@ -1,0 +1,78 @@
+@use '../variables' as *;
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  height: 100%;
+  font-size: 22px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  -webkit-text-size-adjust: 100%;
+  overflow: hidden;
+}
+
+body {
+  margin: 0;
+  height: 100%;
+  overflow: hidden;
+  background-color: $bg;
+  color: $text-primary;
+  cursor: none;
+}
+
+::selection {
+  background: $accent;
+  color: $bg;
+}
+
+p, dd, dl, figure, blockquote { margin: 0; }
+ul, ol { padding: 0; margin: 0; list-style-type: none; }
+h1, h2, h3, h4, h5, h6 { margin: 0; font-size: inherit; font-weight: inherit; }
+
+a {
+  background-color: transparent;
+  text-decoration: none;
+  color: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button, input, optgroup, select, textarea {
+  padding: 0; margin: 0; border: none; border-radius: 0;
+  background-color: transparent; font: inherit; color: inherit;
+  letter-spacing: inherit;
+  -webkit-tap-highlight-color: transparent;
+}
+
+button {
+  cursor: none;
+}
+
+// Touch-friendly tap targets — ensures nothing is too small to press
+a, button {
+  touch-action: manipulation;
+}
+
+// Subtle active state for touch feedback on all tappable elements
+@media (hover: none) and (pointer: coarse) {
+  a:active, button:active {
+    opacity: 0.65;
+    transition: opacity 0.1s ease;
+  }
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
