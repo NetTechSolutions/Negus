@@ -1,6 +1,8 @@
-// One-time image compression script.
+// Image optimisation script.
 // Run: npm run compress
-// Compresses all JPEGs/PNGs in src/assets/images to quality 78 in-place.
+// Resizes images to max 1920px wide/tall (maintains aspect ratio) and
+// compresses in-place. Resize alone typically cuts phone-photo file sizes
+// by 60-80% before compression even runs.
 // Reads via Buffer to avoid Windows path issues with special characters.
 
 import sharp from 'sharp'
@@ -33,9 +35,16 @@ for (const file of files) {
   try {
     // Read as Buffer — avoids Windows native path issues
     const input = readFileSync(file)
+    // Resize to max 1920px in either dimension — phone photos can be 4000px+
+    // which is far larger than any screen needs. withoutEnlargement prevents
+    // upscaling images that are already small.
+    const resized = sharp(input).resize({
+      width: 1920, height: 1920,
+      fit: 'inside', withoutEnlargement: true
+    })
     const buf   = isJpg
-      ? await sharp(input).jpeg({ quality: 78, mozjpeg: true }).toBuffer()
-      : await sharp(input).png({ compressionLevel: 9, palette: true }).toBuffer()
+      ? await resized.jpeg({ quality: 75, mozjpeg: true }).toBuffer()
+      : await resized.png({ compressionLevel: 9, palette: true }).toBuffer()
 
     if (buf.length >= before) {
       console.log(`SKIP  ${label}  (already optimal at ${(before/1024).toFixed(0)}KB)`)

@@ -3,8 +3,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26' font-family='serif' fill='%23b8ff00'>N</text></svg>" />
-  <title>Projects — Negus</title>  <link rel="stylesheet" href="./src/styles/main.scss" />
+  <link rel="icon" href="./src/assets/images/logo/small.png" />
+  <title>Projects - Negus</title>
+  <link rel="preload" as="font" type="font/woff2" href="./src/assets/fonts/Lausanne-300.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="./src/assets/fonts/cardinalfruitweb-regular.woff2" crossorigin />
+  <link rel="stylesheet" href="./src/styles/main.scss" />
 </head>
 <body data-barba="wrapper">
 
@@ -12,7 +15,7 @@
 
   <nav class="navbar" id="navbar">
     <a href="./index.html" class="navbar__logo">
-      <span class="navbar__logo-text">Negus</span>
+      <img class="navbar__logo-img" src="./src/assets/images/logo/small.png" alt="Negus - Interior Architecture & Design" />
     </a>
     <div class="navbar__right">
       <a href="#" class="navbar__gallery-link" id="galleryTrigger">Gallery</a>
@@ -34,7 +37,7 @@
 
   <div class="nav-overlay" id="navOverlay">
     <div class="nav-overlay__descriptor" aria-hidden="true">
-      Commercial Interior Design<br>Bulawayo, Zimbabwe
+      Interior Architecture & Design<br>Zimbabwe
     </div>
     <nav class="nav-overlay__items">
       <a href="./index.html" class="nav-overlay__item">
@@ -56,12 +59,12 @@
     </nav>
     <div class="nav-overlay__side" aria-hidden="true">
       <img class="nav-overlay__side-img" id="navSideImg"
-        src="/src/assets/images/projects/aventra-pharmacy/01.jpg" alt="" />
+        src="./src/assets/images/projects/aventra-pharmacy/01.jpg" alt="" />
     </div>
     <div class="nav-overlay__bottom">
       <div class="nav-overlay__socials">
         <a href="https://instagram.com/neguslighting" target="_blank" rel="noopener">Instagram</a>
-        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.facebook.com/NegusLightingTechnologies" target="_blank" rel="noopener">Facebook</a>
         <a href="https://tiktok.com/@neguslighting" target="_blank" rel="noopener">TikTok</a>
       </div>
     </div>
@@ -70,7 +73,7 @@
 
   <div class="gallery-overlay" id="galleryOverlay">
     <div class="gallery-overlay__left">
-      <img class="gallery-overlay__image" id="galleryImage" src="/src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Gallery image" loading="lazy" decoding="async" />
+      <img class="gallery-overlay__image" id="galleryImage" src="./src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Gallery image" loading="lazy" decoding="async" />
     </div>
     <div class="gallery-overlay__right">
       <span class="gallery-overlay__slide-num" id="gallerySlideNum">01</span>
@@ -84,9 +87,9 @@
   </div>
 
   <footer class="status-bar">
-    <span class="status-bar__left">Lighting Technologies</span>
+    <span class="status-bar__left">Interior Architecture</span>
     <span class="status-bar__center" id="statusBarCenter"></span>
-    <span class="status-bar__right">©2026</span>
+    <span class="status-bar__right">&copy;2026</span>
   </footer>
 
   <main data-barba="container" data-barba-namespace="projects">
@@ -99,9 +102,9 @@
 
       <div class="projects-grid" id="projectsGrid">
 
-        <a href="#" class="projects-card" data-img="/src/assets/images/projects/multicare-dental/01.jpg" data-index="0">
+        <a href="#" class="projects-card" data-img="./src/assets/images/projects/multicare-dental/01.jpg" data-index="0">
           <div class="projects-card__img-wrap">
-            <img loading="lazy" decoding="async" src="/src/assets/images/projects/multicare-dental/01.jpg" alt="MultiCare Dental Surgery" />
+            <img loading="lazy" decoding="async" src="./src/assets/images/projects/multicare-dental/01.jpg" alt="MultiCare Dental Surgery" />
           </div>
           <div class="projects-card__overlay">
             <span class="projects-card__num">01</span>
@@ -112,9 +115,9 @@
           </div>
         </a>
 
-        <a href="#" class="projects-card" data-img="/src/assets/images/projects/aventra-pharmacy/01.jpg" data-index="1">
+        <a href="#" class="projects-card" data-img="./src/assets/images/projects/aventra-pharmacy/01.jpg" data-index="1">
           <div class="projects-card__img-wrap">
-            <img loading="lazy" decoding="async" src="/src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Aventra Pharmacy" />
+            <img loading="lazy" decoding="async" src="./src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Aventra Pharmacy" />
           </div>
           <div class="projects-card__overlay">
             <span class="projects-card__num">02</span>
@@ -125,9 +128,9 @@
           </div>
         </a>
 
-        <a href="#" class="projects-card" data-img="/src/assets/images/projects/kims-apparel/01.jpg" data-index="2">
+        <a href="#" class="projects-card" data-img="./src/assets/images/projects/kims-apparel/01.jpg" data-index="2">
           <div class="projects-card__img-wrap">
-            <img loading="lazy" decoding="async" src="/src/assets/images/projects/kims-apparel/01.jpg" alt="Kim's Apparel" />
+            <img loading="lazy" decoding="async" src="./src/assets/images/projects/kims-apparel/01.jpg" alt="Kim's Apparel" />
           </div>
           <div class="projects-card__overlay">
             <span class="projects-card__num">03</span>
@@ -138,9 +141,9 @@
           </div>
         </a>
 
-        <a href="#" class="projects-card" data-img="/src/assets/images/projects/chaneys-hair/01.jpg" data-index="3">
+        <a href="#" class="projects-card" data-img="./src/assets/images/projects/chaneys-hair/01.jpg" data-index="3">
           <div class="projects-card__img-wrap">
-            <img loading="lazy" decoding="async" src="/src/assets/images/projects/chaneys-hair/01.jpg" alt="Chaney's Modern Hair Luxury" />
+            <img loading="lazy" decoding="async" src="./src/assets/images/projects/chaneys-hair/01.jpg" alt="Chaney's Modern Hair Luxury" />
           </div>
           <div class="projects-card__overlay">
             <span class="projects-card__num">04</span>
@@ -151,9 +154,9 @@
           </div>
         </a>
 
-        <a href="#" class="projects-card" data-img="/src/assets/images/projects/luxehub/01.jpg" data-index="4">
+        <a href="#" class="projects-card" data-img="./src/assets/images/projects/luxehub/01.jpg" data-index="4">
           <div class="projects-card__img-wrap">
-            <img loading="lazy" decoding="async" src="/src/assets/images/projects/luxehub/01.jpg" alt="Luxehub" />
+            <img loading="lazy" decoding="async" src="./src/assets/images/projects/luxehub/01.jpg" alt="Luxehub" />
           </div>
           <div class="projects-card__overlay">
             <span class="projects-card__num">05</span>
@@ -164,9 +167,9 @@
           </div>
         </a>
 
-        <a href="#" class="projects-card" data-img="/src/assets/images/company/IMG_20260406_210056.jpg.jpeg" data-index="5">
+        <a href="#" class="projects-card" data-img="./src/assets/images/company/IMG_20260406_210056.jpg.jpeg" data-index="5">
           <div class="projects-card__img-wrap">
-            <img loading="lazy" decoding="async" src="/src/assets/images/company/IMG_20260406_210056.jpg.jpeg" alt="2026 Installation" />
+            <img loading="lazy" decoding="async" src="./src/assets/images/company/IMG_20260406_210056.jpg.jpeg" alt="2026 Installation" />
           </div>
           <div class="projects-card__overlay">
             <span class="projects-card__num">06</span>
@@ -182,6 +185,54 @@
     </div>
   </main>
 
-  <script type="module" src="/src/main.js"></script>
+  <!-- Project detail panel -->
+  <div class="project-panel" id="projectPanel">
+    <div class="project-panel__inner" id="projectPanelInner">
+      <div class="project-panel__img-side">
+        <img class="project-panel__hero-img" id="projectPanelImg" src="" alt="" />
+        <span class="project-panel__beam"></span>
+        <span class="project-panel__beam"></span>
+        <span class="project-panel__beam"></span>
+        <div class="project-panel__glass-strip">
+          <div class="project-panel__stat">
+            <span class="project-panel__stat-val" id="panelYear">2026</span>
+            <span class="project-panel__stat-key">Year</span>
+          </div>
+          <div class="project-panel__stat">
+            <span class="project-panel__stat-val" id="panelLocation">Bulawayo</span>
+            <span class="project-panel__stat-key">Location</span>
+          </div>
+          <div class="project-panel__stat">
+            <span class="project-panel__stat-val" id="panelScope">Full Fit-Out</span>
+            <span class="project-panel__stat-key">Scope</span>
+          </div>
+        </div>
+      </div>
+      <div class="project-panel__info-side">
+        <button class="project-panel__close" id="projectPanelClose" aria-label="Close panel"></button>
+        <p class="project-panel__eyebrow" id="panelEyebrow">Interior Project</p>
+        <h2 class="project-panel__title" id="panelTitle">Project Name</h2>
+        <p class="project-panel__desc" id="panelDesc">Description loading...</p>
+        <p class="project-panel__lighting-label">Design Approach</p>
+        <div class="project-panel__lighting-chips" id="panelChips"></div>
+        <div class="project-panel__actions">
+          <button class="project-panel__gallery-btn" id="panelGalleryBtn">View Gallery</button>
+          <a class="project-panel__wa-btn" href="https://wa.me/263781620377" target="_blank" rel="noopener">
+            <svg viewBox="0 0 24 24"><path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.445h.006c6.585 0 11.946-5.336 11.949-11.896.002-3.176-1.24-6.165-3.48-8.448zM12.045 21.785h-.005a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.975.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.893-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.886-9.889 9.886zm5.422-7.403c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.15-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/></svg>
+            Get a Quote
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WhatsApp floating action button -->
+  <a class="wa-btn" id="waBtn" href="https://wa.me/263781620377" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.445h.006c6.585 0 11.946-5.336 11.949-11.896.002-3.176-1.24-6.165-3.48-8.448zM12.045 21.785h-.005a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.975.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.893-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.886-9.889 9.886zm5.422-7.403c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.15-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    </svg>
+  </a>
+
+  <script type="module" src="./src/main.js"></script>
 </body>
 </html>

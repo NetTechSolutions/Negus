@@ -1,7 +1,7 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
-// SCROLL label pulse — draws attention without a timer
+// SCROLL label pulse - draws attention without a timer
 @keyframes scrollPulse {
   0%, 100% { opacity: 0.35; }
   50%       { opacity: 0.85; }
@@ -16,6 +16,7 @@
   0%   { transform: scale(1);    opacity: 0.5; }
   100% { transform: scale(1.55); opacity: 0; }
 }
+
 
 .home-hero {
   position: relative;
@@ -40,7 +41,7 @@
   align-items: center;
   justify-content: center;
 
-  // Gradient + vignette over the full-bleed image — keeps text legible
+  // Gradient + vignette over the full-bleed image - keeps text legible
   &::before {
     content: '';
     position: absolute;
@@ -67,6 +68,11 @@
   pointer-events: none;
   user-select: none;
   z-index: 4;
+  padding: fs(10) fs(16);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(12px) saturate(1.4);
+  -webkit-backdrop-filter: blur(12px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 
   @media (max-width: 820px) {
     top: auto;
@@ -147,19 +153,24 @@
 // At 1920px: 25vw ≈ 480px → text bleeds ~300px past each edge. Correct.
 
 .home-hero__title {
-  font-family: $font-serif;
-  font-size: fs(350);
-  text-transform: uppercase;
+  font-family: "Playwrite GB J", cursive;
+  font-weight: 400;
+  font-style: normal;
+  font-size: fs(220);
   text-align: center;
   line-height: 0.92;
-  color: $text-primary;
+  color: #fff;
+  text-shadow:
+    0 0 10px #b8ff00,
+    0 0 25px #b8ff00,
+    0 0 50px #b8ff00;
   pointer-events: none;
   user-select: none;
   position: relative;
-  z-index: 3; // above the gradient overlay (z:2)
+  z-index: 3;
 
-  @media (max-width: 820px) { font-size: fs(240); }
-  @media (max-width: 480px) { font-size: fs(190); }
+  @media (max-width: 820px) { font-size: fs(140); }
+  @media (max-width: 480px) { font-size: fs(110); }
 }
 
 .home-hero__line {
@@ -178,7 +189,7 @@
 // 23vw × (670/490 ratio) ≈ 23vw × 31.4vw at any viewport.
 
 .home-hero__thumbs {
-  // purely a layout container — no size, no position
+  // purely a layout container - no size, no position
 }
 
 .home-hero__thumb {
@@ -196,10 +207,15 @@
     object-fit: cover;
     display: block;
     object-position: center;
+    will-change: transform;
+    transform: translateZ(0);
   }
 
   &.is-active {
-    opacity: 1;
+    // opacity is GSAP-controlled — no CSS override here.
+    // CSS setting opacity:1 here causes a visible flash between the initial
+    // paint (before the deferred JS loads) and when GSAP hides it for the
+    // entrance animation. JS sets opacity via gsap.set/gsap.to exclusively.
     pointer-events: auto;
     cursor: none;
 
@@ -240,6 +256,7 @@
   color: $text-primary;
   text-transform: none;
   margin-bottom: fs(32);
+  text-shadow: 0 0 10px rgba(#b8ff00, 0.15);
 
   @media (max-width: 820px) { font-size: fs(40); }
   @media (max-width: 480px) { font-size: fs(30); }
@@ -337,6 +354,7 @@
   line-height: 1.0;
   color: $text-primary;
   text-transform: uppercase;
+  text-shadow: 0 0 10px rgba(#b8ff00, 0.15);
 
   @media (max-width: 820px) { font-size: fs(52); }
 }
@@ -405,19 +423,25 @@
   right: fs(var(--ps));
   bottom: fs(60);
   width: min(fs(420), 90%);
-  background: $bg;
+  background: rgba(10, 10, 10, 0.55);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
   padding: fs(48) fs(40);
   display: flex;
   flex-direction: column;
   gap: fs(20);
   border-top: 2px solid $accent;
+  border-left: 1px solid rgba(#b8ff00, 0.15);
+  box-shadow: 0 0 40px rgba(#b8ff00, 0.06), inset 0 0 20px rgba(#b8ff00, 0.02);
 
   @media (max-width: 820px) {
     position: relative;
     right: auto;
     bottom: auto;
     width: 100%;
-    background: $surface;
+    background: rgba(17, 17, 17, 0.8);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
     padding: fs(40) fs(var(--ps));
     border-top: 2px solid $accent;
   }
@@ -472,6 +496,7 @@
   color: $text-primary;
   text-transform: uppercase;
   margin-bottom: fs(32);
+  text-shadow: 0 0 10px rgba(#b8ff00, 0.15);
 
   @media (max-width: 820px) { font-size: fs(32); }
 }
@@ -675,6 +700,7 @@
   color: $text-primary;
   text-transform: none;
   text-align: center;
+  text-shadow: 0 0 14px rgba(#b8ff00, 0.2);
 
   @media (max-width: 820px) { font-size: fs(52); }
   @media (max-width: 480px) { font-size: fs(44); }

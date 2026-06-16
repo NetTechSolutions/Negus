@@ -4,8 +4,11 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26' font-family='serif' fill='%23b8ff00'>N</text></svg>" />
-  <title>About — Negus</title>  <link rel="stylesheet" href="./src/styles/main.scss" />
+  <link rel="icon" href="./src/assets/images/logo/small.png" />
+  <title>About - Negus</title>
+  <link rel="preload" as="font" type="font/woff2" href="./src/assets/fonts/Lausanne-300.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="./src/assets/fonts/cardinalfruitweb-regular.woff2" crossorigin />
+  <link rel="stylesheet" href="./src/styles/main.scss" />
 </head>
 
 <body data-barba="wrapper">
@@ -14,7 +17,7 @@
 
   <nav class="navbar" id="navbar">
     <a href="./index.html" class="navbar__logo">
-      <span class="navbar__logo-text">Negus</span>
+      <img class="navbar__logo-img" src="./src/assets/images/logo/small.png" alt="Negus - Interior Architecture & Design" />
     </a>
     <div class="navbar__right">
       <a href="#" class="navbar__gallery-link" id="galleryTrigger">Gallery</a>
@@ -36,7 +39,7 @@
 
   <div class="nav-overlay" id="navOverlay">
     <div class="nav-overlay__descriptor" aria-hidden="true">
-      Commercial Interior Design<br>Bulawayo, Zimbabwe
+      Interior Architecture & Design<br>Zimbabwe
     </div>
     <nav class="nav-overlay__items">
       <a href="./index.html" class="nav-overlay__item">
@@ -62,12 +65,12 @@
     </nav>
     <div class="nav-overlay__side" aria-hidden="true">
       <img class="nav-overlay__side-img" id="navSideImg"
-        src="/src/assets/images/company/IMG_20260406_210056.jpg.jpeg" alt="" />
+        src="./src/assets/images/company/IMG_20260406_210056.jpg.jpeg" alt="" />
     </div>
     <div class="nav-overlay__bottom">
       <div class="nav-overlay__socials">
         <a href="https://instagram.com/neguslighting" target="_blank" rel="noopener">Instagram</a>
-        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.facebook.com/NegusLightingTechnologies" target="_blank" rel="noopener">Facebook</a>
         <a href="https://tiktok.com/@neguslighting" target="_blank" rel="noopener">TikTok</a>
       </div>
     </div>
@@ -76,7 +79,7 @@
 
   <div class="gallery-overlay" id="galleryOverlay">
     <div class="gallery-overlay__left">
-      <img class="gallery-overlay__image" id="galleryImage" src="/src/assets/images/projects/aventra-pharmacy/01.jpg"
+      <img class="gallery-overlay__image" id="galleryImage" src="./src/assets/images/projects/aventra-pharmacy/01.jpg"
         alt="Gallery image" />
     </div>
     <div class="gallery-overlay__right">
@@ -91,30 +94,30 @@
   </div>
 
   <footer class="status-bar">
-    <span class="status-bar__left">Bulawayo</span>
+    <span class="status-bar__left">Zimbabwe</span>
     <span class="status-bar__center" id="statusBarCenter"></span>
-    <span class="status-bar__right">Zimbabwe</span>
+    <span class="status-bar__right">Africa</span>
   </footer>
 
   <main data-barba="container" data-barba-namespace="about">
     <div class="about-page">
 
-      <!-- Hero: centered heading — animated by _entranceAbout(), no data-reveal -->
+      <!-- Hero: centered heading - animated by _entranceAbout(), no data-reveal -->
       <div class="about-top">
         <h1 class="about-top__title">
           <span class="about-top__line"><span class="about-top__word">Studio</span></span>
           <span class="about-top__line"><span class="about-top__word">Profile</span></span>
         </h1>
         <div class="about-top__status">
-          <span>Bulawayo</span>
           <span>Zimbabwe</span>
+          <span>Africa</span>
         </div>
         <div class="about-top__rule"></div>
       </div>
 
       <!-- Editorial image -->
       <div class="about-photo-wrap" data-reveal-img>
-        <img class="about-photo" src="/src/assets/images/company/IMG_20260406_210056.jpg.jpeg"
+        <img class="about-photo" src="./src/assets/images/company/IMG_20260406_210056.jpg.jpeg"
           alt="Negus interior design installation" loading="lazy" decoding="async" />
       </div>
 
@@ -124,7 +127,7 @@
           <span>0</span><span>1</span>
         </div>
         <h2 class="about-section__headline">
-          Design is your most powerful business asset.
+          Building Royalty.<br>Designing Excellence.
         </h2>
       </section>
 
@@ -132,45 +135,45 @@
       <section class="about-section about-section--body" data-reveal>
         <div class="about-section__label">studio</div>
         <div class="about-section__content">
-          <h3 class="about-section__subhead">We design commercial spaces that perform.</h3>
+          <h3 class="about-section__subhead">We create environments that inspire and elevate.</h3>
           <div class="about-section__copy">
             <p>
-              Negus is a Bulawayo-based interior design practice dedicated to transforming commercial spaces into strategic business assets. We specialize in salons, boutiques, and hospitality venues — the environments where brand experience and business performance intersect.
+              Negus is a premier Zimbabwean interior architecture, design, renovation, and exhibition solutions firm. Inspired by the word Negus, meaning "King" or "Royalty," our brand embodies elegance, sophistication, innovation, and uncompromising attention to detail.
             </p>
             <p>
-              Our methodology is rooted in the Bulawayo context: local climate, material availability, and the city's architectural heritage inform every decision. From ergonomic station layouts and acoustic zoning to procurement and construction management, we handle the complete project lifecycle — from concept brief to final walkthrough.
+              We specialize in transforming residential, commercial, hospitality, and exhibition spaces. From concept development and space planning to interior renovations and experiential brand environments, we deliver bespoke solutions that combine functionality with timeless aesthetics, tailored exactly to our client's vision.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Section 03: market -->
+      <!-- Section 03: vision -->
       <section class="about-section about-section--body" data-reveal>
-        <div class="about-section__label">market</div>
+        <div class="about-section__label">vision</div>
         <div class="about-section__content">
-          <h3 class="about-section__subhead">Bulawayo's commercial renaissance.</h3>
+          <h3 class="about-section__subhead">Africa's benchmark for excellence.</h3>
           <div class="about-section__copy">
             <p>
-              Bulawayo's retail and hospitality sectors are experiencing a renaissance, with a growing demand for distinctive, high-quality spaces that serve discerning consumers. Salon clients seek Instagram-worthy interiors that convey luxury and hygiene; boutiques require layouts that maximize merchandise impact and guide customer flow; hospitality businesses need atmospheres that balance comfort, acoustics, and durability.
+              Our vision is to become Africa's benchmark for interior architecture and design excellence by creating transformative spaces that inspire people, strengthen brands, and enrich lifestyles. We believe exceptional spaces are created through careful planning, precision, and thoughtful design execution.
             </p>
             <p>
-              There is a clear gap in the local market for a designer who understands the operational nuances of these industries while delivering world-class finishes. Negus fills that gap — combining international design sensibility with a deep understanding of what works in Zimbabwe.
+              We deliver royal-standard solutions through creativity, innovation, craftsmanship, and client-centered service. Our deep understanding of local markets is complemented by international design trends, ensuring we provide premium outcomes that exceed expectations in functionality, aesthetics, and value.
             </p>
           </div>
         </div>
       </section>
 
-      <!-- Section 04: process -->
+      <!-- Section 04: services -->
       <section class="about-section about-section--body" data-reveal>
-        <div class="about-section__label">process</div>
+        <div class="about-section__label">services</div>
         <div class="about-section__content">
-          <h3 class="about-section__subhead">Full-service, start to finish.</h3>
+          <h3 class="about-section__subhead">End-to-end design solutions.</h3>
           <div class="about-section__copy">
             <p>
-              We translate your brand identity into a spatial narrative — centering on color psychology, lighting design, and materiality that resonates with your target clientele. For salons and boutiques we prioritize ergonomic workspaces and logical circulation; for hospitality we focus on acoustic zoning and social energy.
+              We offer comprehensive interior architecture & design, spatial planning, 3D visualization, and material selection. Furthermore, Negus revitalizes existing environments through expertly managed renovations, transforming residential and commercial properties into modern, functional spaces.
             </p>
             <p>
-              Leveraging local supply chains and vetted contractors across Zimbabwe, we manage every stage of your commercial fit-out — from sourcing finishes and furniture to overseeing construction — ensuring strict adherence to timelines and budget.
+              Additionally, we create immersive exhibition environments and brand activations. By incorporating custom stands, modular systems, and advanced lighting integration, we help brands stand out and engage audiences powerfully. Throughout all services, we remain committed to sustainable and environmentally conscious design practices.
             </p>
           </div>
         </div>
@@ -183,7 +186,7 @@
           <h3 class="about-section__subhead">Mr Shadreck Ngorima</h3>
           <div class="about-section__copy">
             <p>
-              Negus was founded with a singular conviction: that commercial spaces in Bulawayo deserve the same level of design rigour as those in any global city. Mr Ngorima brings a results-driven approach to every project — measuring success not just in aesthetics but in footfall, dwell time, and client retention for the businesses we serve.
+              Negus was founded with a singular conviction: that African spaces deserve the same level of design rigour as those in any global city. Mr Ngorima brings a results-driven approach, pursuing the highest standards in creativity, integrity, and client-centricity. We design with purpose, create with excellence, and inspire through innovation.
             </p>
             <p>
               To discuss your project, reach out directly at <a href="mailto:neguslighting@gmail.com" style="color:var(--ct);text-decoration:underline">neguslighting@gmail.com</a> or call <a href="tel:+2630781620377" style="color:var(--ct);text-decoration:underline">0781 620 377</a>.
@@ -195,7 +198,14 @@
     </div>
   </main>
 
-  <script type="module" src="/src/main.js"></script>
+  <!-- WhatsApp floating action button -->
+  <a class="wa-btn" id="waBtn" href="https://wa.me/263781620377" target="_blank" rel="noopener" aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.445h.006c6.585 0 11.946-5.336 11.949-11.896.002-3.176-1.24-6.165-3.48-8.448zM12.045 21.785h-.005a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.975.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.893-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.886-9.889 9.886zm5.422-7.403c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.15-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z"/>
+    </svg>
+  </a>
+
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

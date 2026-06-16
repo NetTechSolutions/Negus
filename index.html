@@ -1,13 +1,20 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1, viewport-fit=cover" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><text y='26' font-size='26' font-family='serif' fill='%23b8ff00'>N</text></svg>" />
-  <title>Negus Lighting Technologies</title>
+  <link rel="icon" href="./src/assets/images/logo/small.png" />
+  <title>Negus - Interior Architecture & Design</title>
   <link rel="stylesheet" href="./src/styles/main.scss" />
-  <!-- Preload the logo and first hero image so they appear instantly -->  <link rel="preload" as="image" href="./src/assets/images/hero/hero_1.jpeg" />
+  <!-- Self-hosted fonts: preload before CSS is parsed so the first paint uses the correct font -->
+  <link rel="preload" as="font" type="font/woff2" href="./src/assets/fonts/Lausanne-300.woff2" crossorigin />
+  <link rel="preload" as="font" type="font/woff2" href="./src/assets/fonts/cardinalfruitweb-regular.woff2" crossorigin />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playwrite+GB+J:ital@0;1&display=swap" rel="stylesheet">
+  <!-- Preload the logo and first hero image so they appear instantly -->
+  <link rel="preload" as="image" href="./src/assets/images/logo/logo-large.jpg" />
 </head>
 
 <body data-barba="wrapper">
@@ -16,7 +23,7 @@
 
   <nav class="navbar" id="navbar">
     <a href="./index.html" class="navbar__logo">
-      <span class="navbar__logo-text">Negus</span>
+      <img class="navbar__logo-img" src="./src/assets/images/logo/small.png" alt="Negus - Interior Architecture & Design" />
     </a>
     <div class="navbar__right">
       <a href="#" class="navbar__gallery-link" id="galleryTrigger">Gallery</a>
@@ -38,7 +45,7 @@
 
   <div class="nav-overlay" id="navOverlay">
     <div class="nav-overlay__descriptor" aria-hidden="true">
-      Commercial Interior Design<br>Bulawayo, Zimbabwe
+      Interior Architecture & Design<br>Zimbabwe
     </div>
     <nav class="nav-overlay__items">
       <a href="./index.html" class="nav-overlay__item is-active">
@@ -63,13 +70,12 @@
       </a>
     </nav>
     <div class="nav-overlay__side" aria-hidden="true">
-      <img class="nav-overlay__side-img" id="navSideImg"
-        src="/src/assets/images/hero/hero_1.jpeg" alt="" />
+      <img class="nav-overlay__side-img" id="navSideImg" src="./src/assets/images/logo/logo-large.jpg" alt="" />
     </div>
     <div class="nav-overlay__bottom">
       <div class="nav-overlay__socials">
         <a href="https://instagram.com/neguslighting" target="_blank" rel="noopener">Instagram</a>
-        <a href="#" target="_blank" rel="noopener">Facebook</a>
+        <a href="https://www.facebook.com/NegusLightingTechnologies" target="_blank" rel="noopener">Facebook</a>
         <a href="https://tiktok.com/@neguslighting" target="_blank" rel="noopener">TikTok</a>
       </div>
     </div>
@@ -78,7 +84,7 @@
 
   <div class="gallery-overlay" id="galleryOverlay">
     <div class="gallery-overlay__left">
-      <img class="gallery-overlay__image" id="galleryImage" src="/src/assets/images/projects/aventra-pharmacy/01.jpg"
+      <img class="gallery-overlay__image" id="galleryImage" src="./src/assets/images/projects/aventra-pharmacy/01.jpg"
         alt="Gallery image" loading="lazy" decoding="async" />
     </div>
     <div class="gallery-overlay__right">
@@ -93,9 +99,9 @@
   </div>
 
   <footer class="status-bar">
-    <span class="status-bar__left">Lighting Technologies</span>
+    <span class="status-bar__left">Interior Architecture</span>
     <span class="status-bar__center" id="statusBarCenter"></span>
-    <span class="status-bar__right">©2026</span>
+    <span class="status-bar__right">&copy;2026</span>
   </footer>
 
   <main data-barba="container" data-barba-namespace="home">
@@ -105,28 +111,35 @@
         <!-- Scroll label + cycling counter -->
         <div class="home-hero__meta">
           <span class="home-hero__scroll">scroll</span>
-          <span class=”home-hero__counter” id=”homeCycleCounter”>01 — 03</span>
+          <span class="home-hero__counter" id="homeCycleCounter">01 - 04</span>
         </div>
 
         <!-- Mobile-only brand descriptor -->
-        <p class=”home-hero__descriptor”>Commercial Interior Design — Bulawayo</p>
+        <p class="home-hero__descriptor">Interior Architecture, Design & Exhibitions</p>
 
         <!-- Large centered heading -->
-        <h1 class="home-hero__title">
-          <span class="home-hero__line"><span class="home-hero__word">Iconic</span></span>
-          <span class="home-hero__line"><span class="home-hero__word">Lighting</span></span>
+        <h1 class="home-hero__title" id="homeHeroTitle">
+          <span class="home-hero__line"><span class="home-hero__word">Negus</span></span>
+          <span class="home-hero__line"><span class="home-hero__word">Studio</span></span>
         </h1>
 
-        <!-- Stacked portrait thumbnails — all centered, shown one at a time -->
+        <!-- Stacked portrait thumbnails - all centered, shown one at a time -->
         <div class="home-hero__thumbs">
           <a href="./projects.html" class="home-hero__thumb is-active" data-index="0">
-            <img src="/src/assets/images/hero/hero_1.jpeg" alt=”Negus — Commercial Interior Design” fetchpriority="high" decoding="async" />
+            <img src="./src/assets/images/logo/logo-large.jpg" alt="Negus - Interior Architecture & Design" fetchpriority="high"
+              decoding="async" />
           </a>
           <a href="./projects.html" class="home-hero__thumb" data-index="1">
-            <img src="/src/assets/images/hero/hero_2.jpg" alt=”Negus — Commercial Interior Design” loading="lazy" decoding="async" />
+            <img src="./src/assets/images/hero/hero_1.jpg" alt="Negus - Interior Architecture & Design" loading="lazy"
+              decoding="async" />
           </a>
           <a href="./projects.html" class="home-hero__thumb" data-index="2">
-            <img src="/src/assets/images/hero/hero_3.jpeg" alt=”Negus — Commercial Interior Design” loading="lazy" decoding="async" />
+            <img src="./src/assets/images/hero/hero_2.jpeg" alt="Negus - Interior Architecture & Design" loading="lazy"
+              decoding="async" />
+          </a>
+          <a href="./projects.html" class="home-hero__thumb" data-index="3">
+            <img src="./src/assets/images/hero/hero_3.jpeg" alt="Negus - Interior Architecture & Design" loading="lazy"
+              decoding="async" />
           </a>
         </div>
 
@@ -135,169 +148,214 @@
           <span class="home-hero__indicator is-active"></span>
           <span class="home-hero__indicator"></span>
           <span class="home-hero__indicator"></span>
+          <span class="home-hero__indicator"></span>
         </div>
 
       </div>
     </section>
 
-    <!-- â”€â”€ Categories â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- Categories -->
     <section class="home-cats">
       <div class="home-cats__intro" data-reveal>
-        <p class="home-cats__tagline">Spaces that define your brand.</p>
+        <p class="home-cats__tagline">Building Royalty. Designing Excellence.</p>
         <div class="home-cats__rule"></div>
       </div>
       <div class="home-cats__grid" data-reveal-stagger>
         <a href="./projects.html" class="home-cats__cell" data-reveal-child>
           <span class="home-cats__cell-label">Salons</span>
           <div class="home-cats__cell-img" data-reveal-img>
-            <img src="/src/assets/images/projects/chaneys-hair/01.jpg" alt="Salon &amp; Beauty" loading="lazy" decoding="async" />
+            <img src="./src/assets/images/projects/chaneys-hair/01.jpg" alt="Salon &amp; Beauty" loading="lazy"
+              decoding="async" />
           </div>
         </a>
         <a href="./projects.html" class="home-cats__cell" data-reveal-child>
           <span class="home-cats__cell-label">Boutiques</span>
           <div class="home-cats__cell-img" data-reveal-img>
-            <img src="/src/assets/images/projects/kims-apparel/01.jpg" alt="Boutique &amp; Fashion" loading="lazy" decoding="async" />
+            <img src="./src/assets/images/projects/kims-apparel/01.jpg" alt="Boutique &amp; Fashion" loading="lazy"
+              decoding="async" />
           </div>
         </a>
         <a href="./projects.html" class="home-cats__cell" data-reveal-child>
           <span class="home-cats__cell-label">Hospitality</span>
           <div class="home-cats__cell-img" data-reveal-img>
-            <img src="/src/assets/images/projects/luxehub/01.jpg" alt="Hospitality &amp; Luxury" loading="lazy" decoding="async" />
+            <img src="./src/assets/images/projects/luxehub/01.jpg" alt="Hospitality &amp; Luxury" loading="lazy"
+              decoding="async" />
           </div>
         </a>
       </div>
     </section>
 
-    <!-- â”€â”€ The Approach â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- The Approach -->
     <section class="home-approach">
       <div class="home-approach__left" data-reveal>
         <h2 class="home-approach__heading">The<br>Approach</h2>
       </div>
       <div class="home-approach__right" data-reveal>
         <p class="home-approach__body">
-          From analyzing your brand identity and operational needs to sourcing materials and overseeing construction — Negus manages the complete design lifecycle for commercial spaces in Bulawayo. We translate your business into an environment that drives revenue, loyalty, and distinction.
+          From concept development and space planning to interior renovations and experiential brand environments,
+          Negus delivers bespoke solutions that combine functionality with timeless aesthetics. We translate your
+          identity and objectives into memorable spaces that inspire and elevate everyday experiences.
         </p>
         <p class="home-approach__body">
-          We specialize in salons, boutiques, and hospitality venues — the environments where brand experience and business performance intersect. Our methodology is rooted in the Bulawayo context: local climate, material availability, and the unique character of the city inform every decision.
+          We specialize in residential, commercial, hospitality, and exhibition spaces. Our integrated approach
+          ensures that every project is uniquely tailored, merging careful planning, precision, and thoughtful
+          design execution with sustainable and future-ready choices.
         </p>
-        <a href="./about.html" class="home-approach__link">Our Company&nbsp;›</a>
+        <a href="./about.html" class="home-approach__link">Our Company&nbsp;&rsaquo;</a>
       </div>
     </section>
 
-    <!-- â”€â”€ Featured Project â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- Featured Project -->
     <section class="home-featured">
-      <img class="home-featured__bg" src="/src/assets/images/projects/kims-apparel/01.jpg" alt="Kim's Apparel" loading="lazy" decoding="async" />
+      <img class="home-featured__bg" src="./src/assets/images/projects/kims-apparel/01.jpg" alt="Kim's Apparel"
+        loading="lazy" decoding="async" />
       <div class="home-featured__card" data-reveal>
-        <span class="home-featured__eyebrow">Featured Project — Boutique</span>
+        <span class="home-featured__eyebrow">Featured Project - Boutique</span>
         <h3 class="home-featured__title">Kim's Apparel</h3>
         <p class="home-featured__desc">
-          A strategic retail environment designed to maximize merchandise impact and guide customers through an aspirational shopping journey. Warm directional lighting, bespoke display solutions, and a carefully curated material palette establish the boutique as a destination in Bulawayo's fashion landscape.
+          A strategic retail environment designed to maximise merchandise impact and guide customers through an
+          aspirational shopping journey. Bespoke display solutions, a carefully curated material palette, and
+          considered spatial planning establish the boutique as a destination in Bulawayo's fashion landscape.
         </p>
-        <a href="./projects.html" class="home-featured__cta">View Project&nbsp;›</a>
+        <a href="./projects.html" class="home-featured__cta">View Project&nbsp;&rsaquo;</a>
       </div>
     </section>
 
-    <!-- â”€â”€ Our Process â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- Our Process -->
     <section class="home-process">
       <h2 class="home-process__heading" data-reveal>Our Process</h2>
       <div class="home-process__rule"></div>
       <div class="home-process__steps" data-reveal-stagger>
         <div class="home-process__step" data-reveal-child>
-          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="24" cy="20" r="9"/><path d="M24 29v8M17 44h14M24 11V7"/>
+          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="20" r="9" />
+            <path d="M24 29v8M17 44h14M24 11V7" />
           </svg>
           <span>Site Brief</span>
         </div>
         <div class="home-process__step" data-reveal-child>
-          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="8" y="8" width="32" height="32" rx="3"/><path d="M15 18h18M15 24h12"/><circle cx="35" cy="32" r="5"/><path d="M32.5 34.5l-3 3"/>
+          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <rect x="8" y="8" width="32" height="32" rx="3" />
+            <path d="M15 18h18M15 24h12" />
+            <circle cx="35" cy="32" r="5" />
+            <path d="M32.5 34.5l-3 3" />
           </svg>
           <span>Concept Development</span>
         </div>
         <div class="home-process__step" data-reveal-child>
-          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="24" cy="24" r="14"/><path d="M17 24l5 5 9-9"/>
+          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="24" r="14" />
+            <path d="M17 24l5 5 9-9" />
           </svg>
           <span>Flow Analysis</span>
         </div>
         <div class="home-process__step" data-reveal-child>
-          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="24" cy="24" r="7"/><path d="M24 4v5M24 39v5M4 24h5M39 24h5M9.4 9.4l3.5 3.5M35.1 35.1l3.5 3.5M9.4 38.6l3.5-3.5M35.1 12.9l3.5-3.5"/>
+          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="24" cy="24" r="7" />
+            <path
+              d="M24 4v5M24 39v5M4 24h5M39 24h5M9.4 9.4l3.5 3.5M35.1 35.1l3.5 3.5M9.4 38.6l3.5-3.5M35.1 12.9l3.5-3.5" />
           </svg>
           <span>Procurement</span>
         </div>
         <div class="home-process__step" data-reveal-child>
-          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M8 44V20L24 8l16 12v24"/><rect x="18" y="30" width="12" height="14"/>
+          <svg class="home-process__icon" viewBox="0 0 48 48" fill="none" stroke="currentColor" stroke-width="1.2"
+            stroke-linecap="round" stroke-linejoin="round">
+            <path d="M8 44V20L24 8l16 12v24" />
+            <rect x="18" y="30" width="12" height="14" />
           </svg>
           <span>Installation</span>
         </div>
       </div>
       <p class="home-process__sub" data-reveal>
-        From your first consultation to the final walkthrough, we manage every stage of your commercial fit-out. Leveraging local supply chains and vetted contractors across Zimbabwe, we ensure strict adherence to timelines and budget.
+        From your first consultation to the final walkthrough, we manage every stage of your spatial transformation.
+        Leveraging our end-to-end design solutions and commitment to quality, we ensure seamless project coordination,
+        strict adherence to timelines, and premium outcomes.
       </p>
-      <a href="./contact.html" class="home-process__cta" data-reveal data-magnetic>Start Your Project&nbsp;›</a>
+      <a href="./contact.html" class="home-process__cta" data-reveal data-magnetic>Start Your Project&nbsp;&rsaquo;</a>
     </section>
 
-    <!-- â”€â”€ Case Studies â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- Case Studies -->
     <section class="home-cases">
       <div class="home-cases__track" id="homeCasesTrack">
 
         <div class="home-cases__slide">
           <div class="home-cases__slide-img">
-            <img src="/src/assets/images/projects/multicare-dental/01.jpg" alt="MultiCare Dental Surgery" loading="lazy" decoding="async" />
+            <img src="./src/assets/images/projects/multicare-dental/01.jpg" alt="MultiCare Dental Surgery"
+              loading="lazy" decoding="async" />
           </div>
           <div class="home-cases__slide-body">
             <p class="home-cases__slide-text">
-              MultiCare Dental's new clinic required an environment that projects clinical precision while remaining welcoming to patients. We designed an interior scheme that balances hygiene, professionalism, and comfort — optimizing treatment and reception areas for both staff efficiency and patient experience.
+              MultiCare Dental's new clinic required an environment projecting clinical precision while remaining
+              welcoming to patients. We delivered a full interior fit-out — balancing hygienic material specification,
+              a professional atmosphere, and patient comfort — optimising the reception and treatment areas for both
+              staff efficiency and patient experience.
             </p>
             <span class="home-cases__slide-client">MultiCare Dental Surgery</span>
-            <a href="./projects.html" class="home-cases__slide-link">View Project&nbsp;›</a>
+            <a href="./projects.html" class="home-cases__slide-link">View Project&nbsp;&rsaquo;</a>
           </div>
         </div>
 
         <div class="home-cases__slide">
           <div class="home-cases__slide-img">
-            <img src="/src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Aventra Pharmacy" loading="lazy" decoding="async" />
+            <img src="./src/assets/images/projects/aventra-pharmacy/01.jpg" alt="Aventra Pharmacy" loading="lazy"
+              decoding="async" />
           </div>
           <div class="home-cases__slide-body">
             <p class="home-cases__slide-text">
-              Aventra's pharmacy demanded a retail interior that elevated the customer experience while meeting operational compliance standards. The design integrates clean product displays, strategic lighting, and a circulation flow that guides customers and reduces congestion at peak hours.
+              Aventra's pharmacy demanded a retail interior elevating the customer experience while meeting operational
+              compliance standards. The design integrates deliberate material choices, clean product displays, and a
+              circulation flow that guides customers intuitively and reduces congestion at peak hours.
             </p>
             <span class="home-cases__slide-client">Aventra Pharmacy</span>
-            <a href="./projects.html" class="home-cases__slide-link">View Project&nbsp;›</a>
+            <a href="./projects.html" class="home-cases__slide-link">View Project&nbsp;&rsaquo;</a>
           </div>
         </div>
 
         <div class="home-cases__slide">
           <div class="home-cases__slide-img">
-            <img src="/src/assets/images/projects/chaneys-hair/01.jpg" alt="Chaney's Modern Hair Luxury" loading="lazy" decoding="async" />
+            <img src="./src/assets/images/projects/chaneys-hair/01.jpg" alt="Chaney's Modern Hair Luxury" loading="lazy"
+              decoding="async" />
           </div>
           <div class="home-cases__slide-body">
             <p class="home-cases__slide-text">
-              Chaney's is a premium salon concept designed to attract and retain a discerning clientele in Bulawayo. The ergonomic station layout maximizes service capacity while the curated interior — from pendant lighting to material finishes —creates an atmosphere of effortless, Instagram-worthy luxury.
+              Chaney's is a premium salon concept designed to attract and retain a discerning clientele. The ergonomic
+              station layout maximises service capacity while the curated interior — bespoke finishes, considered
+              material selection, and statement pendants — creates an atmosphere of effortless, Instagram-worthy luxury.
             </p>
             <span class="home-cases__slide-client">Chaney's Modern Hair Luxury</span>
-            <a href="./projects.html" class="home-cases__slide-link">View Project&nbsp;›</a>
+            <a href="./projects.html" class="home-cases__slide-link">View Project&nbsp;&rsaquo;</a>
           </div>
         </div>
 
       </div>
       <div class="home-cases__controls">
-        <button class="home-cases__btn" id="homeSliderPrev" aria-label="Previous">‹</button>
-        <button class="home-cases__btn" id="homeSliderNext" aria-label="Next">›</button>
+        <button class="home-cases__btn" id="homeSliderPrev" aria-label="Previous">&lsaquo;</button>
+        <button class="home-cases__btn" id="homeSliderNext" aria-label="Next">&rsaquo;</button>
       </div>
     </section>
 
-    <!-- â”€â”€ CTA â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ -->
+    <!-- CTA -->
     <section class="home-cta" data-reveal>
       <p class="home-cta__headline">Transform your space.</p>
-      <a href="./contact.html" class="home-cta__link" data-magnetic>Start a Project&nbsp;›</a>
+      <a href="./contact.html" class="home-cta__link" data-magnetic>Start a Project&nbsp;&rsaquo;</a>
     </section>
 
   </main>
 
-  <script type="module" src="/src/main.js"></script>
+  <!-- WhatsApp floating action button -->
+  <a class="wa-btn" id="waBtn" href="https://wa.me/263781620377" target="_blank" rel="noopener"
+    aria-label="Chat on WhatsApp">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+      <path
+        d="M20.52 3.449C18.24 1.245 15.24 0 12.045 0 5.463 0 .104 5.334.101 11.893c0 2.096.549 4.14 1.595 5.945L0 24l6.335-1.652c1.746.943 3.71 1.444 5.71 1.445h.006c6.585 0 11.946-5.336 11.949-11.896.002-3.176-1.24-6.165-3.48-8.448zM12.045 21.785h-.005a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.975.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.893-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.886-9.889 9.886zm5.422-7.403c-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.148-.669.15-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347z" />
+    </svg>
+  </a>
+
+  <script type="module" src="./src/main.js"></script>
 </body>
 
 </html>

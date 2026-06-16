@@ -1,6 +1,22 @@
 @use '../variables' as *;
 @use '../mixins' as *;
 
+@keyframes neonGlow {
+  0%, 100% {
+    text-shadow:
+      0 0 4px #fff,
+      0 0 14px #fff,
+      0 0 28px #b8ff00,
+      0 0 60px #b8ff00;
+  }
+  45%, 55% {
+    text-shadow:
+      0 0 2px #fff,
+      0 0 8px #b8ff00,
+      0 0 18px #b8ff00;
+  }
+}
+
 .contact-page {
   display: flex;
   flex-direction: column;
@@ -136,6 +152,7 @@
   line-height: 0.88;
   color: $text-primary;
   text-align: right;
+  animation: neonGlow 5s ease-in-out infinite;
 
   a {
     transition: color 0.4s ease;

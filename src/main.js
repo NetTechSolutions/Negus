@@ -11,25 +11,26 @@ CustomEase.create('menuEase',  'M0,0,C0.1,0,0.2,1,1,1')
 CustomEase.create('imageEase', 'M0,0,C0.31,0.13,0.11,1,1,1')
 
 const GALLERY_IMAGES = [
-  '/src/assets/images/hero/hero_1.jpeg',
-  '/src/assets/images/hero/hero_2.jpg',
-  '/src/assets/images/hero/hero_3.jpeg',
-  '/src/assets/images/projects/multicare-dental/01.jpg',
-  '/src/assets/images/projects/multicare-dental/02.jpg',
-  '/src/assets/images/projects/aventra-pharmacy/01.jpg',
-  '/src/assets/images/projects/aventra-pharmacy/02.jpg',
-  '/src/assets/images/projects/aventra-pharmacy/03.jpg',
-  '/src/assets/images/projects/aventra-pharmacy/04.jpg',
-  '/src/assets/images/projects/kims-apparel/01.jpg',
-  '/src/assets/images/projects/chaneys-hair/01.jpg',
-  '/src/assets/images/projects/chaneys-hair/02.jpg',
-  '/src/assets/images/projects/luxehub/01.jpg',
-  '/src/assets/images/projects/luxehub/02.jpg',
-  '/src/assets/images/company/IMG_20260406_210056.jpg.jpeg',
-  '/src/assets/images/company/IMG_20260406_210114.jpg.jpeg',
-  '/src/assets/images/company/IMG_20260406_210148.jpg.jpeg',
-  '/src/assets/images/company/IMG_20260407_162139.jpg.jpeg',
-  '/src/assets/images/company/2026_04_21_034707346_edit_148332445091426.jpg.jpeg',
+  './src/assets/images/logo/logo-large.jpg',
+  './src/assets/images/hero/hero_1.jpg',
+  './src/assets/images/hero/hero_2.jpeg',
+  './src/assets/images/hero/hero_3.jpeg',
+  './src/assets/images/projects/multicare-dental/01.jpg',
+  './src/assets/images/projects/multicare-dental/02.jpg',
+  './src/assets/images/projects/aventra-pharmacy/01.jpg',
+  './src/assets/images/projects/aventra-pharmacy/02.jpg',
+  './src/assets/images/projects/aventra-pharmacy/03.jpg',
+  './src/assets/images/projects/aventra-pharmacy/04.jpg',
+  './src/assets/images/projects/kims-apparel/01.jpg',
+  './src/assets/images/projects/chaneys-hair/01.jpg',
+  './src/assets/images/projects/chaneys-hair/02.jpg',
+  './src/assets/images/projects/luxehub/01.jpg',
+  './src/assets/images/projects/luxehub/02.jpg',
+  './src/assets/images/company/IMG_20260406_210056.jpg.jpeg',
+  './src/assets/images/company/IMG_20260406_210114.jpg.jpeg',
+  './src/assets/images/company/IMG_20260406_210148.jpg.jpeg',
+  './src/assets/images/company/IMG_20260407_162139.jpg.jpeg',
+  './src/assets/images/company/2026_04_21_034707346_edit_148332445091426.jpg.jpeg',
 ]
 
 // Gallery start index per project (matches project list order in projects.html)
@@ -38,7 +39,7 @@ const PROJECT_GALLERY_STARTS = [3, 5, 9, 10, 12, 14]
 let _openGallery = null
 
 // ─── Touch swipe helper ──────────────────────────────────────────────────────
-// Passive listeners — no scroll blocking, no performance cost.
+// Passive listeners - no scroll blocking, no performance cost.
 
 function onSwipe(el, onLeft, onRight, threshold = 48) {
   let x0 = 0
@@ -155,14 +156,14 @@ function initHamburger() {
     link.addEventListener('click', closeNav)
   })
 
-  // Side image — swaps on nav link hover
+  // Side image - swaps on nav link hover
   const sideImg = document.getElementById('navSideImg')
   if (sideImg) {
     const NAV_IMAGES = {
-      '/':              '/src/assets/images/hero/hero_1.jpeg',
-      '/projects.html': '/src/assets/images/projects/kims-apparel/01.jpg',
-      '/about.html':    '/src/assets/images/company/IMG_20260406_210056.jpg.jpeg',
-      '/contact.html':  '/src/assets/images/projects/chaneys-hair/01.jpg',
+      '/':              './src/assets/images/logo/logo-large.jpg',
+      '/projects.html': './src/assets/images/projects/kims-apparel/01.jpg',
+      '/about.html':    './src/assets/images/company/IMG_20260406_210056.jpg.jpeg',
+      '/contact.html':  './src/assets/images/projects/chaneys-hair/01.jpg',
     }
     items.forEach(item => {
       item.addEventListener('mouseenter', () => {
@@ -246,13 +247,22 @@ function initGallery() {
     if (e.key === 'ArrowRight') nextBtn?.click()
     if (e.key === 'Escape')     closeGallery()
   })
+
+  // Touch swipe on gallery
+  const galleryLeft = overlay.querySelector('.gallery-overlay__left')
+  if (galleryLeft) {
+    onSwipe(galleryLeft,
+      () => { galleryCurrent = (galleryCurrent + 1) % GALLERY_IMAGES.length; updateSlide() },
+      () => { galleryCurrent = (galleryCurrent - 1 + GALLERY_IMAGES.length) % GALLERY_IMAGES.length; updateSlide() }
+    )
+  }
 }
 
 // ─── 4. Home cycling thumbnails ───────────────────────────────────────────────
 // Colours are sampled from each project image; pre-defined here as brand-adjacent tones.
 // Wheel-down / click → next; wheel-up → prev. No auto-timer.
 
-const HOME_BG = ['#26211d', '#1c1b18', '#1d191d']
+const HOME_BG = ['#26211d', '#272b25', '#1c1b18', '#1d191d']
 
 function initHomeCycle() {
   const thumbs  = document.querySelectorAll('.home-hero__thumb')
@@ -285,57 +295,166 @@ function initHomeCycle() {
     })
 
     if (counter) {
-      counter.textContent = `${String(current + 1).padStart(2, '0')} — ${String(total).padStart(2, '0')}`
+      counter.textContent = `${String(current + 1).padStart(2, '0')} - ${String(total).padStart(2, '0')}`
     }
 
     // Sync slide indicators
     document.querySelectorAll('.home-hero__indicator').forEach((ind, i) => {
       ind.classList.toggle('is-active', i === current)
     })
+
+    const title = document.getElementById('homeHeroTitle')
+    if (title) {
+      if (current === 0) {
+        gsap.to(title, { opacity: 0, duration: 0.4, ease: 'power2.inOut' })
+      } else if (prev === 0) {
+        const words = title.querySelectorAll('.home-hero__word')
+        gsap.set(title, { opacity: 1 })
+        gsap.fromTo(words, 
+          { yPercent: 110, rotation: 4, opacity: 0, scale: 0.95 }, 
+          { yPercent: 0, rotation: 0, opacity: 1, scale: 1, duration: 1.2, stagger: 0.15, ease: 'power3.out', overwrite: true }
+        )
+      }
+    }
   }
 
   // Set initial state (no animation on first load)
   hero.style.backgroundColor = HOME_BG[0]
   thumbs[0]?.classList.add('is-active')
   gsap.set(thumbs[0], { opacity: 1 })
-  if (counter) counter.textContent = `01 — ${String(total).padStart(2, '0')}`
+  if (counter) counter.textContent = `01 - ${String(total).padStart(2, '0')}`
   document.querySelectorAll('.home-hero__indicator')[0]?.classList.add('is-active')
 
-  // Wheel: down = next, up = prev
-  hero.addEventListener('wheel', e => {
-    if (locked) return
-    locked = true
-    setTimeout(() => { locked = false }, 750)
-    showThumb(e.deltaY > 0 ? current + 1 : current - 1)
-  }, { passive: true })
-
-  // Touch swipe on the hero
-  onSwipe(hero,
-    () => showThumb(current + 1),
-    () => showThumb(current - 1)
-  )
+  // Auto-advance every 10 seconds
+  if (window.homeCycleTimer) clearInterval(window.homeCycleTimer)
+  window.homeCycleTimer = setInterval(() => showThumb(current + 1), 10000)
 
   // Click on the active thumbnail → next
   thumbs.forEach(thumb => {
     thumb.addEventListener('click', e => {
       e.preventDefault()
+      clearInterval(window.homeCycleTimer)
       showThumb(current + 1)
+      window.homeCycleTimer = setInterval(() => showThumb(current + 1), 10000)
     })
   })
 }
 
-// ─── 5. Projects grid — card click opens gallery ─────────────────────────────
+// ─── 5. Projects grid - card click opens project panel ─────────────────────────
+
+const PROJECT_DATA = [
+  {
+    name: 'MultiCare Dental Surgery', type: 'Clinic',
+    desc: 'A full clinical fit-out designed to project precision while remaining welcoming. We balanced hygienic material specification, professional atmosphere, and patient comfort — optimising treatment and reception areas for both staff efficiency and the patient experience.',
+    img: './src/assets/images/projects/multicare-dental/01.jpg',
+    chips: ['Clinical Fit-Out', 'Hygiene Specification', 'Reception Design', 'Integrated Lighting'],
+    year: '2025', location: 'Bulawayo', scope: 'Full Fit-Out', galleryIndex: 3,
+  },
+  {
+    name: 'Aventra Pharmacy', type: 'Retail',
+    desc: 'A retail interior designed to elevate the customer experience while meeting operational standards. Clean product displays, deliberate material choices, and a considered circulation flow guide customers through the space and reduce congestion at peak hours.',
+    img: './src/assets/images/projects/aventra-pharmacy/01.jpg',
+    chips: ['Retail Planning', 'Display Design', 'Circulation Flow', 'Integrated Lighting'],
+    year: '2025', location: 'Bulawayo', scope: 'Interior Design', galleryIndex: 5,
+  },
+  {
+    name: "Kim's Apparel", type: 'Boutique',
+    desc: "A strategic retail environment designed to maximise merchandise impact. Bespoke display solutions, a curated material palette, and considered spatial planning establish Kim's Apparel as a destination in Bulawayo's fashion landscape.",
+    img: './src/assets/images/projects/kims-apparel/01.jpg',
+    chips: ['Retail Interior', 'Bespoke Joinery', 'Material Palette', 'Track Lighting'],
+    year: '2025', location: 'Bulawayo', scope: 'Full Fit-Out', galleryIndex: 9,
+  },
+  {
+    name: "Chaney's Modern Hair Luxury", type: 'Salon',
+    desc: "A premium salon concept designed to attract and retain a discerning clientele. The curated interior — bespoke finishes, considered material selection, and statement lighting — creates an atmosphere of effortless, Instagram-worthy luxury.",
+    img: './src/assets/images/projects/chaneys-hair/01.jpg',
+    chips: ['Luxury Interior', 'Statement Lighting', 'Bespoke Finishes', 'Brand Atmosphere'],
+    year: '2024', location: 'Bulawayo', scope: 'Concept & Build', galleryIndex: 10,
+  },
+  {
+    name: 'Luxehub', type: 'Hospitality',
+    desc: 'A hospitality venue designed for atmosphere and social energy. Layered spatial zones, a deliberate material language, and integrated feature lighting create distinct moods — drawing guests in and ensuring they stay longer.',
+    img: './src/assets/images/projects/luxehub/01.jpg',
+    chips: ['Hospitality Interior', 'Spatial Zoning', 'Feature Lighting', 'Material Language'],
+    year: '2025', location: 'Bulawayo', scope: 'Interior & Lighting', galleryIndex: 12,
+  },
+  {
+    name: '2026 Installation', type: 'Commercial',
+    desc: "A bespoke commercial interior installation showcasing Negus's technical capabilities — combining architectural lighting integration, decorative pendant features, and programmable scene control within a considered spatial framework.",
+    img: './src/assets/images/company/IMG_20260406_210056.jpg.jpeg',
+    chips: ['Commercial Interior', 'Architectural LED', 'Pendant Feature', 'Scene Control'],
+    year: '2026', location: 'Bulawayo', scope: 'Commercial Install', galleryIndex: 14,
+  },
+]
 
 function initProjectsGrid() {
-  const cards = document.querySelectorAll('.projects-card')
+  const cards      = document.querySelectorAll('.projects-card')
   if (!cards.length) return
 
-  cards.forEach((card, i) => {
-    card.addEventListener('click', e => {
-      e.preventDefault()
-      const startIndex = PROJECT_GALLERY_STARTS[i] ?? 0
-      if (_openGallery) _openGallery(startIndex)
+  const panel      = document.getElementById('projectPanel')
+  const panelInner = document.getElementById('projectPanelInner')
+  const panelImg   = document.getElementById('projectPanelImg')
+  const panelTitle = document.getElementById('panelTitle')
+  const panelEyebrow = document.getElementById('panelEyebrow')
+  const panelDesc  = document.getElementById('panelDesc')
+  const panelChips = document.getElementById('panelChips')
+  const panelYear  = document.getElementById('panelYear')
+  const panelLoc   = document.getElementById('panelLocation')
+  const panelScope = document.getElementById('panelScope')
+  const closeBtn   = document.getElementById('projectPanelClose')
+  const galleryBtn = document.getElementById('panelGalleryBtn')
+  if (!panel) return
+
+  let currentGalleryIndex = 0
+
+  function openPanel(index) {
+    const data = PROJECT_DATA[index]
+    if (!data) return
+    panelImg.src             = data.img
+    panelImg.alt             = data.name
+    panelTitle.textContent   = data.name
+    panelEyebrow.textContent = data.type
+    panelDesc.textContent    = data.desc
+    panelYear.textContent    = data.year
+    panelLoc.textContent     = data.location
+    panelScope.textContent   = data.scope
+    currentGalleryIndex      = data.galleryIndex
+    panelChips.innerHTML     = data.chips.map(c => `<span class="project-panel__chip">${c}</span>`).join('')
+    panel.classList.add('is-open')
+    gsap.fromTo(panelInner,
+      { y: '100%', opacity: 0 },
+      { y: '0%',   opacity: 1, duration: 0.75, ease: 'power4.out' }
+    )
+    gsap.fromTo(panelImg,
+      { scale: 1.08 },
+      { scale: 1, duration: 1.1, ease: 'power3.out', delay: 0.1 }
+    )
+    document.body.style.overflow = 'hidden'
+  }
+
+  function closePanel() {
+    gsap.to(panelInner, {
+      y: '100%', opacity: 0, duration: 0.55, ease: 'power3.in',
+      onComplete: () => {
+        panel.classList.remove('is-open')
+        document.body.style.overflow = ''
+      }
     })
+  }
+
+  cards.forEach((card, i) => {
+    card.addEventListener('click', e => { e.preventDefault(); openPanel(i) })
+  })
+
+  if (closeBtn) closeBtn.addEventListener('click', closePanel)
+
+  if (galleryBtn) galleryBtn.addEventListener('click', () => {
+    closePanel()
+    setTimeout(() => { if (_openGallery) _openGallery(currentGalleryIndex) }, 600)
+  })
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && panel.classList.contains('is-open')) closePanel()
   })
 }
 
@@ -453,12 +572,12 @@ function initHomeCasesSlider() {
 // ─── 11. Parallax ─────────────────────────────────────────────────────────────
 
 function initParallax() {
-  // Skip on touch devices — parallax is GPU-heavy and pointless without a mouse
+  // Skip on touch devices - parallax is GPU-heavy and pointless without a mouse
   if (window.matchMedia('(max-width: 820px)').matches) return
 
   const scroller = getScroller()
 
-  // Featured project bg — subtle vertical drift on scroll
+  // Featured project bg - subtle vertical drift on scroll
   const featBg = document.querySelector('.home-featured__bg')
   if (featBg) {
     gsap.fromTo(featBg,
@@ -474,7 +593,7 @@ function initParallax() {
     )
   }
 
-  // About editorial photo — scale + drift
+  // About editorial photo - scale + drift
   const aboutPhoto = document.querySelector('.about-photo')
   if (aboutPhoto) {
     gsap.set(aboutPhoto, { scale: 1.12 })
@@ -515,7 +634,7 @@ let _firstLoad = true
 function initPageEntrance() {
   const ns = getNamespace()
 
-  // Navbar + status bar only animate once on first load — they persist across navigations
+  // Navbar + status bar only animate once on first load - they persist across navigations
   if (_firstLoad) {
     _firstLoad = false
     const logo   = document.querySelector('.navbar__logo')
@@ -539,10 +658,12 @@ function _entranceHome() {
   const line2 = document.querySelector('.home-hero__line:nth-child(2) .home-hero__word')
   const meta  = document.querySelector('.home-hero__meta')
   const thumb = document.querySelector('.home-hero__thumb.is-active')
+  const title = document.getElementById('homeHeroTitle')
   if (!line1) return
 
   gsap.set([line1, line2], { yPercent: 110 })
   gsap.set([meta, thumb].filter(Boolean), { opacity: 0 })
+  if (title) gsap.set(title, { opacity: 0 })
 
   gsap.timeline({ delay: 0.25 })
     .to(line1, { yPercent: 0, duration: 1.2, ease: 'menuEase' })
@@ -552,7 +673,7 @@ function _entranceHome() {
 }
 
 function _entranceAbout() {
-  // Only animate the hero title words — section subheadings are handled by data-reveal
+  // Only animate the hero title words - section subheadings are handled by data-reveal
   const words  = document.querySelectorAll('.about-top__title .about-top__word')
   const status = document.querySelectorAll('.about-top__status span')
   if (!words.length) return
@@ -607,8 +728,8 @@ function setActiveNav() {
 // ─── 8. Status bar center content per page ────────────────────────────────────
 
 const STATUS_BAR = {
-  home:     '<a href="./projects.html">View All Projects</a>',
-  projects: '<a href="./about.html">About the Studio</a>',
+  home:     '<a href="/projects.html">View All Projects</a>',
+  projects: '<a href="/about.html">About the Studio</a>',
   about:    '',
   contact:  '<a href="https://instagram.com/neguslighting" target="_blank" rel="noopener">Instagram</a>&nbsp;&nbsp;<a href="#" target="_blank" rel="noopener">Facebook</a>',
 }
@@ -640,12 +761,11 @@ function initPageFeatures() {
   initMagneticElements()
   setActiveNav()
 
-  // Defer refresh until the browser has fully settled layout.
-  // A single rAF is not enough after Barba container swaps — use a
-  // longer timeout and force a full recalculation.
-  setTimeout(() => {
-    ScrollTrigger.refresh(true)
-  }, 200)
+  // Wait for fonts before refreshing so text reflow from font-swap
+  // doesn't invalidate the trigger positions we just registered.
+  document.fonts.ready.then(() => {
+    requestAnimationFrame(() => ScrollTrigger.refresh(true))
+  })
 }
 
 // ─── Barba page transitions ────────────────────────────────────────────────────
@@ -675,6 +795,8 @@ barba.init({
       gsap.set(bars[0], { y: 0, rotation: 0 })
       gsap.set(bars[1], { opacity: 1 })
       gsap.set(bars[2], { y: 0, rotation: 0 })
+
+      if (window.homeCycleTimer) clearInterval(window.homeCycleTimer)
 
       return gsap.to(current.container, {
         opacity: 0, y: -40, duration: 0.45, ease: 'power3.in'

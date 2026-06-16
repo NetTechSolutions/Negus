@@ -1,0 +1,371 @@
+﻿@use '../variables' as *;
+@use '../mixins' as *;
+
+@keyframes neonFlicker {
+  0%, 19%, 21%, 23%, 25%, 54%, 56%, 100% {
+    text-shadow:
+      0 0 4px #fff,
+      0 0 11px #fff,
+      0 0 19px #fff,
+      0 0 40px #b8ff00,
+      0 0 80px #b8ff00,
+      0 0 90px #b8ff00,
+      0 0 100px #b8ff00,
+      0 0 150px #b8ff00;
+  }
+  20%, 24%, 55% {
+    text-shadow: none;
+  }
+}
+
+@keyframes panelSlideUp {
+  from { transform: translateY(100%); opacity: 0; }
+  to   { transform: translateY(0);    opacity: 1; }
+}
+
+@keyframes panelSlideDown {
+  from { transform: translateY(0);    opacity: 1; }
+  to   { transform: translateY(100%); opacity: 0; }
+}
+
+@keyframes lightBeam {
+  0%   { opacity: 0; transform: scaleY(0) rotate(-15deg); }
+  30%  { opacity: 0.6; }
+  100% { opacity: 0; transform: scaleY(1.5) rotate(-15deg); }
+}
+
+// ─── Panel backdrop ───────────────────────────────────────────────────────────
+
+.project-panel {
+  position: fixed;
+  inset: 0;
+  z-index: 400;
+  visibility: hidden;
+  pointer-events: none;
+  display: flex;
+  flex-direction: column;
+}
+
+.project-panel.is-open {
+  visibility: visible;
+  pointer-events: all;
+}
+
+// ─── Panel inner ──────────────────────────────────────────────────────────────
+
+.project-panel__inner {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  overflow: hidden;
+  transform: translateY(100%);
+
+  @media (max-width: 820px) {
+    grid-template-columns: 1fr;
+    grid-template-rows: 48vh 1fr;
+    overflow-y: auto;
+    scrollbar-width: none;
+    &::-webkit-scrollbar { display: none; }
+  }
+}
+
+// ─── Left: full-bleed image ────────────────────────────────────────────────────
+
+.project-panel__img-side {
+  position: relative;
+  overflow: hidden;
+  background: #000;
+
+  @media (max-width: 820px) {
+    // stays in first row
+  }
+}
+
+.project-panel__hero-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.project-panel__img-side:hover .project-panel__hero-img {
+  transform: scale(1.04);
+}
+
+// Light beam overlay on image
+.project-panel__beam {
+  position: absolute;
+  top: -20%;
+  left: 30%;
+  width: 2px;
+  height: 140%;
+  background: linear-gradient(to bottom, transparent, rgba(#b8ff00, 0.35), transparent);
+  transform-origin: top center;
+  animation: lightBeam 3.5s ease-out infinite;
+  pointer-events: none;
+
+  &:nth-child(2) {
+    left: 55%;
+    animation-delay: 1.2s;
+    width: 1px;
+    background: linear-gradient(to bottom, transparent, rgba(#b8ff00, 0.2), transparent);
+  }
+
+  &:nth-child(3) {
+    left: 70%;
+    animation-delay: 2.4s;
+    background: linear-gradient(to bottom, transparent, rgba(#b8ff00, 0.15), transparent);
+  }
+}
+
+// Gradient on top of image for legibility
+.project-panel__img-side::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(to right, rgba(0,0,0,0.6) 0%, transparent 50%),
+    linear-gradient(to top, rgba(0,0,0,0.5) 0%, transparent 40%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+// ─── Right: info side ─────────────────────────────────────────────────────────
+
+.project-panel__info-side {
+  position: relative;
+  background: $bg;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: fs(80) fs(60);
+  overflow: hidden;
+
+  // Ambient neon glow in corner
+  &::before {
+    content: '';
+    position: absolute;
+    top: -80px;
+    right: -80px;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(circle, rgba(#b8ff00, 0.08) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  @media (max-width: 1200px) { padding: fs(60) fs(40); }
+  @media (max-width: 820px)  { padding: fs(48) fs(var(--ps)); }
+}
+
+// ─── Close button ─────────────────────────────────────────────────────────────
+
+.project-panel__close {
+  position: absolute;
+  top: fs(40);
+  right: fs(40);
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgba(#f5f5f5, 0.2);
+  border-radius: 50%;
+  background: rgba(#f5f5f5, 0.05);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: none;
+  transition: border-color 0.3s, background 0.3s;
+  z-index: 5;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    width: 16px;
+    height: 1px;
+    background: #f5f5f5;
+  }
+  &::before { transform: rotate(45deg); }
+  &::after  { transform: rotate(-45deg); }
+
+  &:hover {
+    border-color: $accent;
+    background: rgba(#b8ff00, 0.1);
+    &::before, &::after { background: $accent; }
+  }
+
+  @media (max-width: 820px) { top: fs(20); right: fs(20); }
+}
+
+// ─── Eyebrow / type tag ───────────────────────────────────────────────────────
+
+.project-panel__eyebrow {
+  @include label-style;
+  font-size: fs(13);
+  color: $accent;
+  margin-bottom: fs(16);
+  letter-spacing: 0.2em;
+  text-shadow: 0 0 12px rgba(#b8ff00, 0.6);
+}
+
+// ─── Project title ────────────────────────────────────────────────────────────
+
+.project-panel__title {
+  font-family: $font-serif;
+  font-size: fs(72);
+  text-transform: uppercase;
+  line-height: 0.95;
+  color: $text-primary;
+  margin-bottom: fs(32);
+  animation: neonFlicker 8s linear infinite;
+  animation-delay: 2s;
+
+  @media (max-width: 1200px) { font-size: fs(52); }
+  @media (max-width: 820px)  { font-size: fs(44); }
+}
+
+// ─── Description ──────────────────────────────────────────────────────────────
+
+.project-panel__desc {
+  font-size: fs(16);
+  line-height: 1.75;
+  color: rgba(#f5f5f5, 0.7);
+  text-transform: none;
+  margin-bottom: fs(40);
+  max-width: 480px;
+
+  @media (max-width: 820px) { font-size: fs(14); margin-bottom: fs(28); }
+}
+
+// ─── Lighting types section ───────────────────────────────────────────────────
+
+.project-panel__lighting-label {
+  @include label-style;
+  font-size: fs(12);
+  color: rgba(#f5f5f5, 0.4);
+  letter-spacing: 0.18em;
+  margin-bottom: fs(14);
+}
+
+.project-panel__lighting-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: fs(10);
+  margin-bottom: fs(48);
+}
+
+.project-panel__chip {
+  @include label-style;
+  font-size: fs(12);
+  color: $accent;
+  border: 1px solid rgba(#b8ff00, 0.45);
+  padding: fs(7) fs(18);
+  border-radius: 999px;
+  background: rgba(#b8ff00, 0.06);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  letter-spacing: 0.12em;
+  box-shadow: 0 0 12px rgba(#b8ff00, 0.15), inset 0 0 8px rgba(#b8ff00, 0.05);
+  transition: background 0.3s, box-shadow 0.3s;
+
+  &:hover {
+    background: rgba(#b8ff00, 0.15);
+    box-shadow: 0 0 20px rgba(#b8ff00, 0.35), inset 0 0 10px rgba(#b8ff00, 0.08);
+  }
+}
+
+// ─── Action buttons ───────────────────────────────────────────────────────────
+
+.project-panel__actions {
+  display: flex;
+  align-items: center;
+  gap: fs(20);
+  flex-wrap: wrap;
+}
+
+.project-panel__gallery-btn {
+  @include label-style;
+  font-size: fs(14);
+  color: $bg;
+  background: $accent;
+  border: 1px solid $accent;
+  padding: fs(13) fs(36);
+  display: inline-block;
+  transition: background 0.3s, color 0.3s;
+  box-shadow: 0 0 20px rgba(#b8ff00, 0.4);
+
+  &:hover {
+    background: transparent;
+    color: $accent;
+  }
+}
+
+.project-panel__wa-btn {
+  @include label-style;
+  font-size: fs(14);
+  color: $accent;
+  border: 1px solid rgba(#b8ff00, 0.35);
+  padding: fs(13) fs(36);
+  background: rgba(#b8ff00, 0.06);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  display: inline-flex;
+  align-items: center;
+  gap: fs(10);
+  transition: background 0.3s, border-color 0.3s;
+  text-decoration: none;
+
+  svg {
+    width: 16px;
+    height: 16px;
+    fill: $accent;
+    flex-shrink: 0;
+  }
+
+  &:hover {
+    background: rgba(#b8ff00, 0.14);
+    border-color: $accent;
+  }
+}
+
+// ─── Glassmorphism stat strip ─────────────────────────────────────────────────
+
+.project-panel__glass-strip {
+  position: absolute;
+  bottom: fs(40);
+  left: fs(40);
+  display: flex;
+  gap: fs(32);
+  padding: fs(16) fs(24);
+  background: rgba(255, 255, 255, 0.04);
+  backdrop-filter: blur(16px) saturate(1.6);
+  -webkit-backdrop-filter: blur(16px) saturate(1.6);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  z-index: 3;
+  pointer-events: none;
+
+  @media (max-width: 820px) { display: none; }
+}
+
+.project-panel__stat {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-panel__stat-val {
+  font-family: $font-serif;
+  font-size: fs(22);
+  color: $accent;
+  text-shadow: 0 0 10px rgba(#b8ff00, 0.6);
+  line-height: 1;
+}
+
+.project-panel__stat-key {
+  @include label-style;
+  font-size: fs(10);
+  color: rgba(#f5f5f5, 0.4);
+  letter-spacing: 0.14em;
+}

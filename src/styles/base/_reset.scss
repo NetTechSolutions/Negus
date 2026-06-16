@@ -76,3 +76,11 @@ svg {
   height: 100%;
   fill: currentColor;
 }
+
+// Prevent flash of visible content before the deferred <script type="module">
+// executes and GSAP applies its own starting states. Without this, elements
+// render at full opacity for ~200-500ms on first paint, then snap to hidden
+// when GSAP runs fromTo — causing the "glitch on initial scroll" effect.
+[data-reveal],
+[data-reveal-stagger] > [data-reveal-child] { opacity: 0; }
+[data-reveal-img] { clip-path: inset(100% 0 0 0); }
