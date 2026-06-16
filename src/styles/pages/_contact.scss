@@ -86,11 +86,9 @@
   align-items: flex-end;
 
   @media (max-width: 820px) {
-    position: absolute;
-    top: 0;
-    right: fs(var(--ps));
     font-size: fs(14);
     line-height: 1.429;
+    margin-top: fs(30);
   }
 
   @media (max-width: 480px) {

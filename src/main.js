@@ -262,7 +262,7 @@ function initGallery() {
 // Colours are sampled from each project image; pre-defined here as brand-adjacent tones.
 // Wheel-down / click → next; wheel-up → prev. No auto-timer.
 
-const HOME_BG = ['#26211d', '#272b25', '#1c1b18', '#1d191d']
+const HOME_BG = ['#26211d', '#272b25', '#1c1b18']
 
 function initHomeCycle() {
   const thumbs  = document.querySelectorAll('.home-hero__thumb')
